@@ -7,6 +7,7 @@ Crossroad
 ---------
 
  * `thoth <https://github.com/fridex/thoth>`_
+ * `thoth-adviser <https://github.com/fridex/thoth-adviser>`_
  * `thoth-analyzer <https://github.com/fridex/thoth-analyzer>`_
  * `thoth-cleanup-job <https://github.com/fridex/thoth-cleanup-job>`_
  * `thoth-common <https://github.com/fridex/thoth-common>`_
