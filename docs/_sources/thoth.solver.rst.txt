@@ -1,0 +1,35 @@
+thoth.solver package
+====================
+
+.. automodule:: thoth.solver
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+    thoth.solver.solvers
+
+Submodules
+----------
+
+thoth.solver.cli module
+-----------------------
+
+.. automodule:: thoth.solver.cli
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+thoth.solver.python module
+--------------------------
+
+.. automodule:: thoth.solver.python
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+

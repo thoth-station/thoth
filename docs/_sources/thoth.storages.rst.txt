@@ -1,0 +1,51 @@
+thoth.storages package
+======================
+
+.. automodule:: thoth.storages
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+    thoth.storages.graph
+
+Submodules
+----------
+
+thoth.storages.analyses module
+------------------------------
+
+.. automodule:: thoth.storages.analyses
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+thoth.storages.base module
+--------------------------
+
+.. automodule:: thoth.storages.base
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+thoth.storages.result\_schema module
+------------------------------------
+
+.. automodule:: thoth.storages.result_schema
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+thoth.storages.solvers module
+-----------------------------
+
+.. automodule:: thoth.storages.solvers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+

@@ -1,0 +1,28 @@
+thoth.adviser package
+=====================
+
+.. automodule:: thoth.adviser
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Submodules
+----------
+
+thoth.adviser.cli module
+------------------------
+
+.. automodule:: thoth.adviser.cli
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+thoth.adviser.pypi module
+-------------------------
+
+.. automodule:: thoth.adviser.pypi
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+

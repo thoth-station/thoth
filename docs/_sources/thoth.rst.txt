@@ -1,0 +1,20 @@
+thoth package
+=============
+
+.. automodule:: thoth
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+    thoth.adviser
+    thoth.analyzer
+    thoth.common
+    thoth.package_extract
+    thoth.solver
+    thoth.storages
+

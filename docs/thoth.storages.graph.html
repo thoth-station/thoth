@@ -1,0 +1,220 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>thoth.storages.graph package &#8212; Thoth  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="thoth.storages package" href="thoth.storages.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-thoth.storages.graph">
+<span id="thoth-storages-graph-package"></span><h1>thoth.storages.graph package<a class="headerlink" href="#module-thoth.storages.graph" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-thoth.storages.graph.janusgraph">
+<span id="thoth-storages-graph-janusgraph-module"></span><h2>thoth.storages.graph.janusgraph module<a class="headerlink" href="#module-thoth.storages.graph.janusgraph" title="Permalink to this headline">¶</a></h2>
+<p>A Gremlin server adapter communicating via a web socket.</p>
+<dl class="class">
+<dt id="thoth.storages.graph.janusgraph.GraphDatabase">
+<em class="property">class </em><code class="descclassname">thoth.storages.graph.janusgraph.</code><code class="descname">GraphDatabase</code><span class="sig-paren">(</span><em>hosts=None</em>, <em>port=None</em>, <em>serializer=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/janusgraph.html#GraphDatabase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="thoth.storages.html#thoth.storages.base.StorageBase" title="thoth.storages.base.StorageBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">thoth.storages.base.StorageBase</span></code></a></p>
+<p>A Gremlin server adapter communicating via a web socket.</p>
+<dl class="attribute">
+<dt id="thoth.storages.graph.janusgraph.GraphDatabase.DEFAULT_HOST">
+<code class="descname">DEFAULT_HOST</code><em class="property"> = 'localhost'</em><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.DEFAULT_HOST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="thoth.storages.graph.janusgraph.GraphDatabase.DEFAULT_PORT">
+<code class="descname">DEFAULT_PORT</code><em class="property"> = 8182</em><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.DEFAULT_PORT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="thoth.storages.graph.janusgraph.GraphDatabase.DEFAULT_SERIALIZER">
+<code class="descname">DEFAULT_SERIALIZER</code><em class="property"> = {'className': 'org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV1d0', 'config': {'serializeResultToString': True}}</em><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.DEFAULT_SERIALIZER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="thoth.storages.graph.janusgraph.GraphDatabase.ENVVAR_HOST_NAME">
+<code class="descname">ENVVAR_HOST_NAME</code><em class="property"> = 'THOTH_JANUSGRAPH_HOST'</em><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.ENVVAR_HOST_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="thoth.storages.graph.janusgraph.GraphDatabase.ENVVAR_HOST_PORT">
+<code class="descname">ENVVAR_HOST_PORT</code><em class="property"> = 'THOTH_JANUSGRAPH_PORT'</em><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.ENVVAR_HOST_PORT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.graph.janusgraph.GraphDatabase.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/janusgraph.html#GraphDatabase.connect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to a graph database via a websocket, use GraphSONSerializersV2d0.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.graph.janusgraph.GraphDatabase.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/janusgraph.html#GraphDatabase.disconnect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close all connections - disconnect from remote.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.graph.janusgraph.GraphDatabase.is_connected">
+<code class="descname">is_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/janusgraph.html#GraphDatabase.is_connected"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.is_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if we are connected to a remote Gremlin server.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.graph.janusgraph.GraphDatabase.store_pypi_package">
+<code class="descname">store_pypi_package</code><span class="sig-paren">(</span><em>package_name: str</em>, <em>package_version: str</em>, <em>dependencies: list</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/thoth/storages/graph/janusgraph.html#GraphDatabase.store_pypi_package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.store_pypi_package" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store the given PyPI package into the graph database and construct dependency graph based on dependencies.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.graph.janusgraph.GraphDatabase.store_pypi_solver_result">
+<code class="descname">store_pypi_solver_result</code><span class="sig-paren">(</span><em>document_id</em>, <em>solver_result</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/janusgraph.html#GraphDatabase.store_pypi_solver_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.store_pypi_solver_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store results of Thoth’s PyPI dependency solver.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="thoth.storages.graph.janusgraph.requires_connection">
+<code class="descclassname">thoth.storages.graph.janusgraph.</code><code class="descname">requires_connection</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/janusgraph.html#requires_connection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.janusgraph.requires_connection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-thoth.storages.graph.models">
+<span id="thoth-storages-graph-models-module"></span><h2>thoth.storages.graph.models module<a class="headerlink" href="#module-thoth.storages.graph.models" title="Permalink to this headline">¶</a></h2>
+<p>Graph database schema.</p>
+<dl class="class">
+<dt id="thoth.storages.graph.models.DependsOn">
+<em class="property">class </em><code class="descclassname">thoth.storages.graph.models.</code><code class="descname">DependsOn</code><span class="sig-paren">(</span><em>source=None</em>, <em>target=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/models.html#DependsOn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.models.DependsOn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">goblin.element.Edge</span></code></p>
+<p>Dependency between packages modeling.</p>
+<dl class="attribute">
+<dt id="thoth.storages.graph.models.DependsOn.document_id">
+<code class="descname">document_id</code><em class="property"> = 'document_id'</em><a class="headerlink" href="#thoth.storages.graph.models.DependsOn.document_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="thoth.storages.graph.models.DependsOn.version_range">
+<code class="descname">version_range</code><em class="property"> = 'version_range'</em><a class="headerlink" href="#thoth.storages.graph.models.DependsOn.version_range" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="thoth.storages.graph.models.PackageVersion">
+<em class="property">class </em><code class="descclassname">thoth.storages.graph.models.</code><code class="descname">PackageVersion</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/models.html#PackageVersion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.models.PackageVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">goblin.element.Vertex</span></code></p>
+<p>Package-version node in graph representing any versioned package.</p>
+<dl class="attribute">
+<dt id="thoth.storages.graph.models.PackageVersion.ecosystem">
+<code class="descname">ecosystem</code><em class="property"> = 'ecosystem'</em><a class="headerlink" href="#thoth.storages.graph.models.PackageVersion.ecosystem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="thoth.storages.graph.models.PackageVersion.name">
+<code class="descname">name</code><em class="property"> = 'name'</em><a class="headerlink" href="#thoth.storages.graph.models.PackageVersion.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="thoth.storages.graph.models.PackageVersion.version">
+<code class="descname">version</code><em class="property"> = 'version'</em><a class="headerlink" href="#thoth.storages.graph.models.PackageVersion.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">thoth.storages.graph package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-thoth.storages.graph.janusgraph">thoth.storages.graph.janusgraph module</a></li>
+<li><a class="reference internal" href="#module-thoth.storages.graph.models">thoth.storages.graph.models module</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="thoth.html">thoth package</a><ul>
+  <li><a href="thoth.storages.html">thoth.storages package</a><ul>
+      <li>Previous: <a href="thoth.storages.html" title="previous chapter">thoth.storages package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/thoth.storages.graph.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Author.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/thoth.storages.graph.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

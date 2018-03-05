@@ -1,0 +1,233 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>thoth.solver.solvers.pypi &#8212; Thoth  documentation</title>
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for thoth.solver.solvers.pypi</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Classes for resolving dependencies as specified in each ecosystem.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">pip.req.req_file</span> <span class="k">import</span> <span class="n">parse_requirements</span>
+<span class="kn">from</span> <span class="nn">xmlrpc.client</span> <span class="k">import</span> <span class="n">ServerProxy</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">check_output</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">NamedTemporaryFile</span>
+
+<span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">Dependency</span>
+<span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">DependencyParser</span>
+<span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">ReleasesFetcher</span>
+<span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">Solver</span>
+
+<span class="n">_LOGGER</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="PypiReleasesFetcher"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiReleasesFetcher">[docs]</a><span class="k">class</span> <span class="nc">PypiReleasesFetcher</span><span class="p">(</span><span class="n">ReleasesFetcher</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Releases fetcher for Pypi.&quot;&quot;&quot;</span>
+
+    <span class="n">_DEFAULT_FETCH_URL</span> <span class="o">=</span> <span class="s1">&#39;https://pypi.python.org/pypi&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fetch_url</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize instance.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span> <span class="o">=</span> <span class="n">ServerProxy</span><span class="p">(</span><span class="n">fetch_url</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_DEFAULT_FETCH_URL</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_search_package_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">package</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Case insensitive search.</span>
+
+<span class="sd">        :param package: str, Name of the package</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">find_pypi_pkg</span><span class="p">(</span><span class="n">package</span><span class="p">):</span>
+            <span class="n">packages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">search</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">package</span><span class="p">})</span>
+            <span class="k">if</span> <span class="n">packages</span><span class="p">:</span>
+                <span class="n">exact_match</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+                               <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">packages</span>
+                               <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">package</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+                <span class="k">if</span> <span class="n">exact_match</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">exact_match</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">find_pypi_pkg</span><span class="p">(</span><span class="n">package</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="s1">&#39;-&#39;</span> <span class="ow">in</span> <span class="n">package</span><span class="p">:</span>
+            <span class="c1"># this is soooo annoying; you can `pip3 install argon2-cffi and it installs</span>
+            <span class="c1">#  argon2_cffi (underscore instead of dash), but searching through XMLRPC</span>
+            <span class="c1">#  API doesn&#39;t find it... so we try to search for underscore variant</span>
+            <span class="c1">#  if the dash variant isn&#39;t found</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">find_pypi_pkg</span><span class="p">(</span><span class="n">package</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">res</span>
+
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Package </span><span class="si">{}</span><span class="s2"> not found&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">package</span><span class="p">))</span>
+
+<div class="viewcode-block" id="PypiReleasesFetcher.fetch_releases"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiReleasesFetcher.fetch_releases">[docs]</a>    <span class="k">def</span> <span class="nf">fetch_releases</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">package</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fetch package releases versions.</span>
+
+<span class="sd">        XML-RPC API Documentation: https://wiki.python.org/moin/PyPIXmlRpc</span>
+<span class="sd">        Signature: package_releases(package_name, show_hidden=False)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">package</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;package&quot;</span><span class="p">)</span>
+
+        <span class="n">releases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">package_releases</span><span class="p">(</span><span class="n">package</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">releases</span><span class="p">:</span>
+            <span class="c1"># try again with swapped case of first character</span>
+            <span class="n">releases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">package_releases</span><span class="p">(</span><span class="n">package</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">swapcase</span><span class="p">()</span> <span class="o">+</span> <span class="n">package</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">releases</span><span class="p">:</span>
+            <span class="c1"># if nothing was found then do case-insensitive search</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fetch_releases</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_search_package_name</span><span class="p">(</span><span class="n">package</span><span class="p">))</span>
+</div></div>
+        <span class="k">return</span> <span class="n">package</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">releases</span>
+
+
+<div class="viewcode-block" id="PypiDependencyParser"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiDependencyParser">[docs]</a><span class="k">class</span> <span class="nc">PypiDependencyParser</span><span class="p">(</span><span class="n">DependencyParser</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Pypi Dependency parsing.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PypiDependencyParser.parse_python"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiDependencyParser.parse_python">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">parse_python</span><span class="p">(</span><span class="n">spec</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse PyPI specification of a single dependency.</span>
+
+<span class="sd">        :param spec: str, for example &quot;Django&gt;=1.5,&lt;1.8&quot;</span>
+<span class="sd">        :return: [Django [[(&#39;&gt;=&#39;, &#39;1.5&#39;), (&#39;&lt;&#39;, &#39;1.8&#39;)]]]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">_extract_op_version</span><span class="p">(</span><span class="n">spec</span><span class="p">):</span>
+            <span class="c1"># https://www.python.org/dev/peps/pep-0440/#compatible-release</span>
+            <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">operator</span> <span class="o">==</span> <span class="s1">&#39;~=&#39;</span><span class="p">:</span>
+                <span class="n">version</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">version</span><span class="p">)</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}:</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">version</span><span class="p">)</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}:</span>
+                        <span class="k">del</span> <span class="n">version</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># will increase the last but one in next line</span>
+                    <span class="n">version</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">version</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%r</span><span class="s1"> must not be used with </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">operator</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">version</span><span class="p">))</span>
+                <span class="k">return</span> <span class="p">[(</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">version</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">version</span><span class="p">))]</span>
+            <span class="c1"># Trailing .* is permitted per</span>
+            <span class="c1"># https://www.python.org/dev/peps/pep-0440/#version-matching</span>
+            <span class="k">elif</span> <span class="n">spec</span><span class="o">.</span><span class="n">operator</span> <span class="o">==</span> <span class="s1">&#39;==&#39;</span> <span class="ow">and</span> <span class="n">spec</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.*&#39;</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="n">check_output</span><span class="p">([</span><span class="s1">&#39;/usr/bin/semver-ranger&#39;</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">version</span><span class="p">],</span>
+                                          <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                    <span class="n">gte</span><span class="p">,</span> <span class="n">lt</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                    <span class="k">return</span> <span class="p">[(</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">gte</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">)),</span> <span class="p">(</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="n">lt</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;&lt;&#39;</span><span class="p">))]</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="n">_LOGGER</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;couldn&#39;t resolve ==</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">spec</span><span class="o">.</span><span class="n">operator</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">version</span>
+            <span class="c1"># https://www.python.org/dev/peps/pep-0440/#arbitrary-equality</span>
+            <span class="c1"># Use of this operator is heavily discouraged, so just convert it to &#39;Version matching&#39;</span>
+            <span class="k">elif</span> <span class="n">spec</span><span class="o">.</span><span class="n">operator</span> <span class="o">==</span> <span class="s1">&#39;===&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;==&#39;</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">version</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">spec</span><span class="o">.</span><span class="n">operator</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">version</span>
+
+        <span class="k">def</span> <span class="nf">_get_pip_spec</span><span class="p">(</span><span class="n">requirements</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;There&#39;s no `specs` field In Pip 8+, take info from `specifier` field.&quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">requirements</span><span class="p">,</span> <span class="s1">&#39;specs&#39;</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">requirements</span><span class="o">.</span><span class="n">specs</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">requirements</span><span class="p">,</span> <span class="s1">&#39;specifier&#39;</span><span class="p">):</span>
+                <span class="n">specs</span> <span class="o">=</span> <span class="p">[</span><span class="n">_extract_op_version</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span> <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">requirements</span><span class="o">.</span><span class="n">specifier</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">specs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="c1"># TODO: I&#39;m not sure with this one</span>
+                    <span class="c1"># we should probably return None instead and let pip deal with this</span>
+                    <span class="n">specs</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;0.0.0&#39;</span><span class="p">)]</span>
+                <span class="k">return</span> <span class="n">specs</span>
+
+        <span class="c1"># create a temporary file and store the spec there since</span>
+        <span class="c1"># `parse_requirements` requires a file</span>
+        <span class="k">with</span> <span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w+&#39;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;pysolve&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+            <span class="n">parsed</span> <span class="o">=</span> <span class="n">parse_requirements</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">dependency</span> <span class="o">=</span> <span class="p">[</span><span class="n">Dependency</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">_get_pip_spec</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">req</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">parsed</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</div>
+        <span class="k">return</span> <span class="n">dependency</span>
+
+<div class="viewcode-block" id="PypiDependencyParser.parse"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiDependencyParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">specs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parse specs.&quot;&quot;&quot;</span></div>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_python</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">]</span>
+
+<div class="viewcode-block" id="PypiDependencyParser.compose"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiDependencyParser.compose">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">compose</span><span class="p">(</span><span class="n">deps</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compose deps.&quot;&quot;&quot;</span></div>
+        <span class="k">return</span> <span class="n">DependencyParser</span><span class="o">.</span><span class="n">compose_sep</span><span class="p">(</span><span class="n">deps</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PypiDependencyParser.restrict_versions"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiDependencyParser.restrict_versions">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">restrict_versions</span><span class="p">(</span><span class="n">deps</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Not implemented.&quot;&quot;&quot;</span></div></div>
+        <span class="k">return</span> <span class="n">deps</span>  <span class="c1"># TODO</span>
+
+
+<div class="viewcode-block" id="PypiSolver"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiSolver">[docs]</a><span class="k">class</span> <span class="nc">PypiSolver</span><span class="p">(</span><span class="n">Solver</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Pypi dependencies solver.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fetcher_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">solver_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize instance.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">PypiDependencyParser</span><span class="p">(</span><span class="o">**</span><span class="p">(</span><span class="n">parser_kwargs</span> <span class="ow">or</span> <span class="p">{})),</span>
+                         <span class="n">PypiReleasesFetcher</span><span class="p">(</span><span class="o">**</span><span class="p">(</span><span class="n">fetcher_kwargs</span> <span class="ow">or</span> <span class="p">{})),</span></div>
+                         <span class="o">**</span><span class="p">(</span><span class="n">solver_kwargs</span> <span class="ow">or</span> <span class="p">{}))</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Author.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
