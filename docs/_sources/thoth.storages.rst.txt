@@ -32,6 +32,38 @@ thoth.storages.base module
     :undoc-members:
     :show-inheritance:
 
+thoth.storages.buildlogs module
+-------------------------------
+
+.. automodule:: thoth.storages.buildlogs
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+thoth.storages.ceph module
+--------------------------
+
+.. automodule:: thoth.storages.ceph
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+thoth.storages.exceptions module
+--------------------------------
+
+.. automodule:: thoth.storages.exceptions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+thoth.storages.result\_base module
+----------------------------------
+
+.. automodule:: thoth.storages.result_base
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 thoth.storages.result\_schema module
 ------------------------------------
 

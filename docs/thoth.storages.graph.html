@@ -80,6 +80,12 @@
 <dd><p>Close all connections - disconnect from remote.</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="thoth.storages.graph.janusgraph.GraphDatabase.g">
+<code class="descname">g</code><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.g" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the g object for synchronous operations with the graph database.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="thoth.storages.graph.janusgraph.GraphDatabase.is_connected">
 <code class="descname">is_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/janusgraph.html#GraphDatabase.is_connected"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.is_connected" title="Permalink to this definition">¶</a></dt>
@@ -112,7 +118,7 @@
 <dl class="class">
 <dt id="thoth.storages.graph.models.DependsOn">
 <em class="property">class </em><code class="descclassname">thoth.storages.graph.models.</code><code class="descname">DependsOn</code><span class="sig-paren">(</span><em>source=None</em>, <em>target=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/models.html#DependsOn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.models.DependsOn" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">goblin.element.Edge</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#thoth.storages.graph.models.EdgeBase" title="thoth.storages.graph.models.EdgeBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">thoth.storages.graph.models.EdgeBase</span></code></a></p>
 <p>Dependency between packages modeling.</p>
 <dl class="attribute">
 <dt id="thoth.storages.graph.models.DependsOn.document_id">
@@ -127,9 +133,27 @@
 </dd></dl>
 
 <dl class="class">
+<dt id="thoth.storages.graph.models.EdgeBase">
+<em class="property">class </em><code class="descclassname">thoth.storages.graph.models.</code><code class="descname">EdgeBase</code><span class="sig-paren">(</span><em>source=None</em>, <em>target=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/models.html#EdgeBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.models.EdgeBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">goblin.element.Edge</span></code></p>
+<p>A base class for edges that extends Goblin’s edge implementation.</p>
+<dl class="classmethod">
+<dt id="thoth.storages.graph.models.EdgeBase.create">
+<em class="property">classmethod </em><code class="descname">create</code><span class="sig-paren">(</span><em>**edge_properties</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/models.html#EdgeBase.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.models.EdgeBase.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create edge based on its properties.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source_node</span> <span class="o">=</span> <span class="n">PackageVersion</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">ecosystem</span><span class="o">=</span><span class="s1">&#39;pypi&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;selinon&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0.0rc1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target_node</span> <span class="o">=</span> <span class="n">PackageVersion</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">ecosystem</span><span class="o">=</span><span class="s1">&#39;pypi&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;pyyaml&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0.0&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">edge</span> <span class="o">=</span> <span class="n">DependsOn</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">version_range</span><span class="o">=</span><span class="s1">&#39;&gt;=10&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source_node</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target_node</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="thoth.storages.graph.models.PackageVersion">
 <em class="property">class </em><code class="descclassname">thoth.storages.graph.models.</code><code class="descname">PackageVersion</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/models.html#PackageVersion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.models.PackageVersion" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">goblin.element.Vertex</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#thoth.storages.graph.models.VertexBase" title="thoth.storages.graph.models.VertexBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">thoth.storages.graph.models.VertexBase</span></code></a></p>
 <p>Package-version node in graph representing any versioned package.</p>
 <dl class="attribute">
 <dt id="thoth.storages.graph.models.PackageVersion.ecosystem">
@@ -145,6 +169,20 @@
 <dt id="thoth.storages.graph.models.PackageVersion.version">
 <code class="descname">version</code><em class="property"> = 'version'</em><a class="headerlink" href="#thoth.storages.graph.models.PackageVersion.version" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="thoth.storages.graph.models.VertexBase">
+<em class="property">class </em><code class="descclassname">thoth.storages.graph.models.</code><code class="descname">VertexBase</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/models.html#VertexBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.models.VertexBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">goblin.element.Vertex</span></code></p>
+<p>A base class for edges that extends Goblin’s vertex implementation.</p>
+<dl class="classmethod">
+<dt id="thoth.storages.graph.models.VertexBase.create">
+<em class="property">classmethod </em><code class="descname">create</code><span class="sig-paren">(</span><em>**vertex_properties</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/models.html#VertexBase.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.models.VertexBase.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create vertex based on its properties.</p>
+<p>See <a class="reference internal" href="#thoth.storages.graph.models.EdgeBase.create" title="thoth.storages.graph.models.EdgeBase.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">thoth.storages.graph.models.EdgeBase.create()</span></code></a>.</p>
+</dd></dl>
 
 </dd></dl>
 

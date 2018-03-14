@@ -32,45 +32,11 @@
   <h1>Source code for thoth.storages.analyses</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Adapter for storing analysis results onto a persistence remote store.&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">StorageBase</span>
+<span class="kn">from</span> <span class="nn">.result_base</span> <span class="k">import</span> <span class="n">ResultStorageBase</span>
 
 
-<div class="viewcode-block" id="AnalysisResultsStore"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.analyses.AnalysisResultsStore">[docs]</a><span class="k">class</span> <span class="nc">AnalysisResultsStore</span><span class="p">(</span><span class="n">StorageBase</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Adapter for storing analysis results.&quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">host</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;THOTH_ANALYSIS_RESULTS_STORE_HOST&#39;</span><span class="p">]</span>
-
-<div class="viewcode-block" id="AnalysisResultsStore.retrieve_by_document_id"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.analyses.AnalysisResultsStore.retrieve_by_document_id">[docs]</a>    <span class="k">def</span> <span class="nf">retrieve_by_document_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve document stored in analysis results store by its ID.&quot;&quot;&quot;</span>
-        <span class="k">assert</span> <span class="n">document_id</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;analysis-&#39;</span><span class="p">),</span> \
-            <span class="s2">&quot;Please make sure you are calling right adapter to retrieve results.&quot;</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/api/v1/result/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">document_id</span><span class="p">))</span>
-        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span></div>
-        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-
-<div class="viewcode-block" id="AnalysisResultsStore.store_document"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.analyses.AnalysisResultsStore.store_document">[docs]</a>    <span class="k">def</span> <span class="nf">store_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Store the given document content, return an ID of the stored document.&quot;&quot;&quot;</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/api/v1/analysis-result&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">),</span> <span class="n">json</span><span class="o">=</span><span class="n">content</span><span class="p">)</span>
-        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span></div>
-        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;document_id&#39;</span><span class="p">]</span>
-
-<div class="viewcode-block" id="AnalysisResultsStore.get_result_listing"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.analyses.AnalysisResultsStore.get_result_listing">[docs]</a>    <span class="k">def</span> <span class="nf">get_result_listing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List all available analysis results stored.&quot;&quot;&quot;</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/api/v1/result?type=analysis&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">))</span>
-        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span></div>
-        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;files&#39;</span><span class="p">]</span>
-
-<div class="viewcode-block" id="AnalysisResultsStore.is_connected"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.analyses.AnalysisResultsStore.is_connected">[docs]</a>    <span class="k">def</span> <span class="nf">is_connected</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="kc">True</span>
-
-<div class="viewcode-block" id="AnalysisResultsStore.connect"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.analyses.AnalysisResultsStore.connect">[docs]</a>    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></div></div>
-        <span class="k">return</span> <span class="kc">True</span>
+<div class="viewcode-block" id="AnalysisResultsStore"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.analyses.AnalysisResultsStore">[docs]</a><span class="k">class</span> <span class="nc">AnalysisResultsStore</span><span class="p">(</span><span class="n">ResultStorageBase</span><span class="p">):</span></div>
+    <span class="n">RESULT_TYPE</span> <span class="o">=</span> <span class="s1">&#39;analysis&#39;</span>
 </pre></div>
 
           </div>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>thoth.storages.solvers &#8212; Thoth  documentation</title>
+    <title>thoth.storages.exceptions &#8212; Thoth  documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
@@ -29,14 +29,20 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <h1>Source code for thoth.storages.solvers</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Adapter for storing solver results onto a persistence remote store.&quot;&quot;&quot;</span>
-
-<span class="kn">from</span> <span class="nn">.result_base</span> <span class="k">import</span> <span class="n">ResultStorageBase</span>
+  <h1>Source code for thoth.storages.exceptions</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Exceptions for storage adapters and storage handling.&quot;&quot;&quot;</span>
 
 
-<div class="viewcode-block" id="SolverResultsStore"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.solvers.SolverResultsStore">[docs]</a><span class="k">class</span> <span class="nc">SolverResultsStore</span><span class="p">(</span><span class="n">ResultStorageBase</span><span class="p">):</span></div>
-    <span class="n">RESULT_TYPE</span> <span class="o">=</span> <span class="s1">&#39;solver&#39;</span>
+<div class="viewcode-block" id="ThothStorageException"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.exceptions.ThothStorageException">[docs]</a><span class="k">class</span> <span class="nc">ThothStorageException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span></div>
+    <span class="sd">&quot;&quot;&quot;A base exception for Thoth storage exception hierarchy.&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="NotFoundError"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.exceptions.NotFoundError">[docs]</a><span class="k">class</span> <span class="nc">NotFoundError</span><span class="p">(</span><span class="n">ThothStorageException</span><span class="p">):</span></div>
+    <span class="sd">&quot;&quot;&quot;Raised if the given artifact cannot be found.&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="SchemaError"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.exceptions.SchemaError">[docs]</a><span class="k">class</span> <span class="nc">SchemaError</span><span class="p">(</span><span class="n">ThothStorageException</span><span class="p">):</span></div>
+    <span class="sd">&quot;&quot;&quot;Raised if trying to store document with invalid schema.&quot;&quot;&quot;</span>
 </pre></div>
 
           </div>

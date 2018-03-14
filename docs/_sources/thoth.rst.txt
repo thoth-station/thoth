@@ -14,6 +14,7 @@ Subpackages
     thoth.adviser
     thoth.analyzer
     thoth.common
+    thoth.lab
     thoth.package_extract
     thoth.solver
     thoth.storages

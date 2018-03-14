@@ -35,6 +35,7 @@
 
 <div class="genindex-jumpbox">
  <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
@@ -65,9 +66,19 @@
   </ul></td>
 </tr></table>
 
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore">BuildLogsStore (class in thoth.storages.buildlogs)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="thoth.storages.html#thoth.storages.ceph.CephStore">CephStore (class in thoth.storages.ceph)</a>
+</li>
       <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.base.Dependency.check">check() (thoth.solver.solvers.base.Dependency method)</a>
 </li>
       <li><a href="thoth.analyzer.html#thoth.analyzer.command.CommandError">CommandError</a>
@@ -82,22 +93,30 @@
         <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiDependencyParser.compose">(thoth.solver.solvers.pypi.PypiDependencyParser static method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.base.DependencyParser.compose_sep">compose_sep() (thoth.solver.solvers.base.DependencyParser static method)</a>
 </li>
-      <li><a href="thoth.storages.html#thoth.storages.analyses.AnalysisResultsStore.connect">connect() (thoth.storages.analyses.AnalysisResultsStore method)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="thoth.storages.html#thoth.storages.base.StorageBase.connect">connect() (thoth.storages.base.StorageBase method)</a>
 
       <ul>
-        <li><a href="thoth.storages.html#thoth.storages.base.StorageBase.connect">(thoth.storages.base.StorageBase method)</a>
+        <li><a href="thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore.connect">(thoth.storages.buildlogs.BuildLogsStore method)</a>
+</li>
+        <li><a href="thoth.storages.html#thoth.storages.ceph.CephStore.connect">(thoth.storages.ceph.CephStore method)</a>
 </li>
         <li><a href="thoth.storages.graph.html#thoth.storages.graph.janusgraph.GraphDatabase.connect">(thoth.storages.graph.janusgraph.GraphDatabase method)</a>
 </li>
-        <li><a href="thoth.storages.html#thoth.storages.solvers.SolverResultsStore.connect">(thoth.storages.solvers.SolverResultsStore method)</a>
+        <li><a href="thoth.storages.html#thoth.storages.result_base.ResultStorageBase.connect">(thoth.storages.result_base.ResultStorageBase method)</a>
 </li>
       </ul></li>
       <li><a href="thoth.package_extract.html#thoth.package_extract.image.construct_rootfs">construct_rootfs() (in module thoth.package_extract.image)</a>
 </li>
+      <li><a href="thoth.storages.graph.html#thoth.storages.graph.models.EdgeBase.create">create() (thoth.storages.graph.models.EdgeBase class method)</a>
+
+      <ul>
+        <li><a href="thoth.storages.graph.html#thoth.storages.graph.models.VertexBase.create">(thoth.storages.graph.models.VertexBase class method)</a>
+</li>
+      </ul></li>
       <li><a href="thoth.common.html#thoth.common.helpers.cwd">cwd() (in module thoth.common.helpers)</a>
 </li>
   </ul></td>
@@ -111,28 +130,28 @@
       <li><a href="thoth.common.html#thoth.common.json.SafeJSONEncoder.default">default() (thoth.common.json.SafeJSONEncoder method)</a>
 </li>
       <li><a href="thoth.storages.graph.html#thoth.storages.graph.janusgraph.GraphDatabase.DEFAULT_HOST">DEFAULT_HOST (thoth.storages.graph.janusgraph.GraphDatabase attribute)</a>
-
-      <ul>
-        <li><a href="thoth.storages.html#thoth.storages.solvers.SolverResultsStore.DEFAULT_HOST">(thoth.storages.solvers.SolverResultsStore attribute)</a>
 </li>
-      </ul></li>
       <li><a href="thoth.storages.graph.html#thoth.storages.graph.janusgraph.GraphDatabase.DEFAULT_PORT">DEFAULT_PORT (thoth.storages.graph.janusgraph.GraphDatabase attribute)</a>
 </li>
       <li><a href="thoth.storages.graph.html#thoth.storages.graph.janusgraph.GraphDatabase.DEFAULT_SERIALIZER">DEFAULT_SERIALIZER (thoth.storages.graph.janusgraph.GraphDatabase attribute)</a>
 </li>
       <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.base.Dependency">Dependency (class in thoth.solver.solvers.base)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.base.Solver.dependency_parser">dependency_parser (thoth.solver.solvers.base.Solver attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.base.DependencyParser">DependencyParser (class in thoth.solver.solvers.base)</a>
 </li>
       <li><a href="thoth.storages.graph.html#thoth.storages.graph.models.DependsOn">DependsOn (class in thoth.storages.graph.models)</a>
 </li>
+      <li><a href="thoth.storages.html#thoth.storages.ceph.CephStore.dict2blob">dict2blob() (thoth.storages.ceph.CephStore static method)</a>
+</li>
       <li><a href="thoth.storages.graph.html#thoth.storages.graph.janusgraph.GraphDatabase.disconnect">disconnect() (thoth.storages.graph.janusgraph.GraphDatabase method)</a>
 </li>
       <li><a href="thoth.package_extract.handlers.html#thoth.package_extract.handlers.dnf.DNF">DNF (class in thoth.package_extract.handlers.dnf)</a>
+</li>
+      <li><a href="thoth.storages.html#thoth.storages.ceph.CephStore.document_exists">document_exists() (thoth.storages.ceph.CephStore method)</a>
 </li>
       <li><a href="thoth.storages.graph.html#thoth.storages.graph.models.DependsOn.document_id">document_id (thoth.storages.graph.models.DependsOn attribute)</a>
 </li>
@@ -146,7 +165,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="thoth.storages.graph.html#thoth.storages.graph.models.PackageVersion.ecosystem">ecosystem (thoth.storages.graph.models.PackageVersion attribute)</a>
 </li>
-      <li><a href="thoth.storages.html#thoth.storages.solvers.SolverResultsStore.ENVVAR_HOST">ENVVAR_HOST (thoth.storages.solvers.SolverResultsStore attribute)</a>
+      <li><a href="thoth.storages.graph.html#thoth.storages.graph.models.EdgeBase">EdgeBase (class in thoth.storages.graph.models)</a>
 </li>
       <li><a href="thoth.storages.graph.html#thoth.storages.graph.janusgraph.GraphDatabase.ENVVAR_HOST_NAME">ENVVAR_HOST_NAME (thoth.storages.graph.janusgraph.GraphDatabase attribute)</a>
 </li>
@@ -180,18 +199,24 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.base.get_ecosystem_solver">get_ecosystem_solver() (in module thoth.solver.solvers.base)</a>
+      <li><a href="thoth.storages.graph.html#thoth.storages.graph.janusgraph.GraphDatabase.g">g (thoth.storages.graph.janusgraph.GraphDatabase attribute)</a>
 </li>
-      <li><a href="thoth.package_extract.handlers.html#thoth.package_extract.handlers.base.HandlerBase.get_handler_names">get_handler_names() (thoth.package_extract.handlers.base.HandlerBase class method)</a>
+      <li><a href="thoth.storages.html#thoth.storages.result_base.ResultStorageBase.get_document_id">get_document_id() (thoth.storages.result_base.ResultStorageBase class method)</a>
 </li>
-      <li><a href="thoth.storages.html#thoth.storages.analyses.AnalysisResultsStore.get_result_listing">get_result_listing() (thoth.storages.analyses.AnalysisResultsStore method)</a>
+      <li><a href="thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore.get_document_listing">get_document_listing() (thoth.storages.buildlogs.BuildLogsStore method)</a>
 
       <ul>
-        <li><a href="thoth.storages.html#thoth.storages.solvers.SolverResultsStore.get_result_listing">(thoth.storages.solvers.SolverResultsStore method)</a>
+        <li><a href="thoth.storages.html#thoth.storages.ceph.CephStore.get_document_listing">(thoth.storages.ceph.CephStore method)</a>
+</li>
+        <li><a href="thoth.storages.html#thoth.storages.result_base.ResultStorageBase.get_document_listing">(thoth.storages.result_base.ResultStorageBase method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.base.get_ecosystem_solver">get_ecosystem_solver() (in module thoth.solver.solvers.base)</a>
+</li>
+      <li><a href="thoth.package_extract.handlers.html#thoth.package_extract.handlers.base.HandlerBase.get_handler_names">get_handler_names() (thoth.package_extract.handlers.base.HandlerBase class method)</a>
+</li>
       <li><a href="thoth.storages.graph.html#thoth.storages.graph.janusgraph.GraphDatabase">GraphDatabase (class in thoth.storages.graph.janusgraph)</a>
 </li>
       <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.base.Tokens.GT">GT (thoth.solver.solvers.base.Tokens attribute)</a>
@@ -220,20 +245,28 @@
 </li>
       <li><a href="thoth.package_extract.html#thoth.package_extract.exceptions.InvalidImageError">InvalidImageError</a>
 </li>
-      <li><a href="thoth.storages.html#thoth.storages.analyses.AnalysisResultsStore.is_connected">is_connected() (thoth.storages.analyses.AnalysisResultsStore method)</a>
+      <li><a href="thoth.storages.html#thoth.storages.base.StorageBase.is_connected">is_connected() (thoth.storages.base.StorageBase method)</a>
 
       <ul>
-        <li><a href="thoth.storages.html#thoth.storages.base.StorageBase.is_connected">(thoth.storages.base.StorageBase method)</a>
+        <li><a href="thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore.is_connected">(thoth.storages.buildlogs.BuildLogsStore method)</a>
+</li>
+        <li><a href="thoth.storages.html#thoth.storages.ceph.CephStore.is_connected">(thoth.storages.ceph.CephStore method)</a>
 </li>
         <li><a href="thoth.storages.graph.html#thoth.storages.graph.janusgraph.GraphDatabase.is_connected">(thoth.storages.graph.janusgraph.GraphDatabase method)</a>
 </li>
-        <li><a href="thoth.storages.html#thoth.storages.solvers.SolverResultsStore.is_connected">(thoth.storages.solvers.SolverResultsStore method)</a>
+        <li><a href="thoth.storages.html#thoth.storages.result_base.ResultStorageBase.is_connected">(thoth.storages.result_base.ResultStorageBase method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="thoth.storages.html#thoth.storages.solvers.SolverResultsStore.iterate_results">iterate_results() (thoth.storages.solvers.SolverResultsStore method)</a>
+      <li><a href="thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore.iterate_results">iterate_results() (thoth.storages.buildlogs.BuildLogsStore method)</a>
+
+      <ul>
+        <li><a href="thoth.storages.html#thoth.storages.ceph.CephStore.iterate_results">(thoth.storages.ceph.CephStore method)</a>
 </li>
+        <li><a href="thoth.storages.html#thoth.storages.result_base.ResultStorageBase.iterate_results">(thoth.storages.result_base.ResultStorageBase method)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -258,11 +291,13 @@
         <li><a href="thoth.storages.graph.html#thoth.storages.graph.models.PackageVersion.name">(thoth.storages.graph.models.PackageVersion attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.base.Tokens.NEQ">NEQ (thoth.solver.solvers.base.Tokens attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.base.NoOpDependencyParser">NoOpDependencyParser (class in thoth.solver.solvers.base)</a>
+</li>
+      <li><a href="thoth.storages.html#thoth.storages.exceptions.NotFoundError">NotFoundError</a>
 </li>
       <li><a href="thoth.package_extract.html#thoth.package_extract.exceptions.NotSupported">NotSupported</a>
 </li>
@@ -271,6 +306,10 @@
 
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="thoth.lab.html#thoth.lab.utils.obtain_location">obtain_location() (in module thoth.lab.utils)</a>
+</li>
+  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.base.Tokens.operators">operators (thoth.solver.solvers.base.Tokens attribute)</a>
 </li>
@@ -328,14 +367,28 @@
         <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiDependencyParser.restrict_versions">(thoth.solver.solvers.pypi.PypiDependencyParser static method)</a>
 </li>
       </ul></li>
-      <li><a href="thoth.storages.html#thoth.storages.analyses.AnalysisResultsStore.retrieve_by_document_id">retrieve_by_document_id() (thoth.storages.analyses.AnalysisResultsStore method)</a>
+      <li><a href="thoth.storages.html#thoth.storages.analyses.AnalysisResultsStore.RESULT_TYPE">RESULT_TYPE (thoth.storages.analyses.AnalysisResultsStore attribute)</a>
 
       <ul>
-        <li><a href="thoth.storages.html#thoth.storages.solvers.SolverResultsStore.retrieve_by_document_id">(thoth.storages.solvers.SolverResultsStore method)</a>
+        <li><a href="thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore.RESULT_TYPE">(thoth.storages.buildlogs.BuildLogsStore attribute)</a>
+</li>
+        <li><a href="thoth.storages.html#thoth.storages.result_base.ResultStorageBase.RESULT_TYPE">(thoth.storages.result_base.ResultStorageBase attribute)</a>
+</li>
+        <li><a href="thoth.storages.html#thoth.storages.solvers.SolverResultsStore.RESULT_TYPE">(thoth.storages.solvers.SolverResultsStore attribute)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="thoth.storages.html#thoth.storages.result_base.ResultStorageBase">ResultStorageBase (class in thoth.storages.result_base)</a>
+</li>
+      <li><a href="thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore.retrieve_document">retrieve_document() (thoth.storages.buildlogs.BuildLogsStore method)</a>
+
+      <ul>
+        <li><a href="thoth.storages.html#thoth.storages.ceph.CephStore.retrieve_document">(thoth.storages.ceph.CephStore method)</a>
+</li>
+        <li><a href="thoth.storages.html#thoth.storages.result_base.ResultStorageBase.retrieve_document">(thoth.storages.result_base.ResultStorageBase method)</a>
+</li>
+      </ul></li>
       <li><a href="thoth.analyzer.html#thoth.analyzer.command.CommandResult.return_code">return_code (thoth.analyzer.command.CommandResult attribute)</a>
 </li>
       <li><a href="thoth.package_extract.handlers.html#thoth.package_extract.handlers.base.HandlerBase.run">run() (thoth.package_extract.handlers.base.HandlerBase method)</a>
@@ -362,6 +415,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="thoth.common.html#thoth.common.json.SafeJSONEncoder">SafeJSONEncoder (class in thoth.common.json)</a>
 </li>
+      <li><a href="thoth.storages.html#thoth.storages.exceptions.SchemaError">SchemaError</a>
+</li>
       <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.base.Solver.solve">solve() (thoth.solver.solvers.base.Solver method)</a>
 </li>
       <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.base.Solver">Solver (class in thoth.solver.solvers.base)</a>
@@ -372,18 +427,22 @@
 </li>
       <li><a href="thoth.solver.solvers.html#thoth.solver.solvers.base.Dependency.spec">spec (thoth.solver.solvers.base.Dependency attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="thoth.analyzer.html#thoth.analyzer.command.CommandResult.stderr">stderr (thoth.analyzer.command.CommandResult attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="thoth.analyzer.html#thoth.analyzer.command.CommandResult.stdout">stdout (thoth.analyzer.command.CommandResult attribute)</a>
 </li>
       <li><a href="thoth.storages.html#thoth.storages.base.StorageBase">StorageBase (class in thoth.storages.base)</a>
 </li>
-      <li><a href="thoth.storages.html#thoth.storages.analyses.AnalysisResultsStore.store_document">store_document() (thoth.storages.analyses.AnalysisResultsStore method)</a>
+      <li><a href="thoth.storages.html#thoth.storages.ceph.CephStore.store_blob">store_blob() (thoth.storages.ceph.CephStore method)</a>
+</li>
+      <li><a href="thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore.store_document">store_document() (thoth.storages.buildlogs.BuildLogsStore method)</a>
 
       <ul>
-        <li><a href="thoth.storages.html#thoth.storages.solvers.SolverResultsStore.store_document">(thoth.storages.solvers.SolverResultsStore method)</a>
+        <li><a href="thoth.storages.html#thoth.storages.ceph.CephStore.store_document">(thoth.storages.ceph.CephStore method)</a>
+</li>
+        <li><a href="thoth.storages.html#thoth.storages.result_base.ResultStorageBase.store_document">(thoth.storages.result_base.ResultStorageBase method)</a>
 </li>
       </ul></li>
       <li><a href="thoth.storages.graph.html#thoth.storages.graph.janusgraph.GraphDatabase.store_pypi_package">store_pypi_package() (thoth.storages.graph.janusgraph.GraphDatabase method)</a>
@@ -416,6 +475,10 @@
 </li>
       <li><a href="thoth.common.html#module-thoth.common.json">thoth.common.json (module)</a>
 </li>
+      <li><a href="thoth.lab.html#module-thoth.lab">thoth.lab (module)</a>
+</li>
+      <li><a href="thoth.lab.html#module-thoth.lab.utils">thoth.lab.utils (module)</a>
+</li>
       <li><a href="thoth.package_extract.html#module-thoth.package_extract">thoth.package_extract (module)</a>
 </li>
       <li><a href="thoth.package_extract.html#module-thoth.package_extract.cli">thoth.package_extract.cli (module)</a>
@@ -436,10 +499,10 @@
 </li>
       <li><a href="thoth.package_extract.handlers.html#module-thoth.package_extract.handlers.yum">thoth.package_extract.handlers.yum (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="thoth.package_extract.html#module-thoth.package_extract.image">thoth.package_extract.image (module)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="thoth.solver.html#module-thoth.solver">thoth.solver (module)</a>
 </li>
       <li><a href="thoth.solver.html#module-thoth.solver.cli">thoth.solver.cli (module)</a>
@@ -458,17 +521,27 @@
 </li>
       <li><a href="thoth.storages.html#module-thoth.storages.base">thoth.storages.base (module)</a>
 </li>
+      <li><a href="thoth.storages.html#module-thoth.storages.buildlogs">thoth.storages.buildlogs (module)</a>
+</li>
+      <li><a href="thoth.storages.html#module-thoth.storages.ceph">thoth.storages.ceph (module)</a>
+</li>
+      <li><a href="thoth.storages.html#module-thoth.storages.exceptions">thoth.storages.exceptions (module)</a>
+</li>
       <li><a href="thoth.storages.graph.html#module-thoth.storages.graph">thoth.storages.graph (module)</a>
 </li>
       <li><a href="thoth.storages.graph.html#module-thoth.storages.graph.janusgraph">thoth.storages.graph.janusgraph (module)</a>
 </li>
       <li><a href="thoth.storages.graph.html#module-thoth.storages.graph.models">thoth.storages.graph.models (module)</a>
 </li>
+      <li><a href="thoth.storages.html#module-thoth.storages.result_base">thoth.storages.result_base (module)</a>
+</li>
       <li><a href="thoth.storages.html#module-thoth.storages.result_schema">thoth.storages.result_schema (module)</a>
 </li>
       <li><a href="thoth.storages.html#module-thoth.storages.solvers">thoth.storages.solvers (module)</a>
 </li>
       <li><a href="thoth.package_extract.html#thoth.package_extract.exceptions.ThothPkgdepsException">ThothPkgdepsException</a>
+</li>
+      <li><a href="thoth.storages.html#thoth.storages.exceptions.ThothStorageException">ThothStorageException</a>
 </li>
       <li><a href="thoth.analyzer.html#thoth.analyzer.command.CommandResult.timeout">timeout (thoth.analyzer.command.CommandResult attribute)</a>
 </li>
@@ -489,6 +562,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="thoth.storages.graph.html#thoth.storages.graph.models.DependsOn.version_range">version_range (thoth.storages.graph.models.DependsOn attribute)</a>
+</li>
+      <li><a href="thoth.storages.graph.html#thoth.storages.graph.models.VertexBase">VertexBase (class in thoth.storages.graph.models)</a>
 </li>
   </ul></td>
 </tr></table>

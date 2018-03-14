@@ -36,14 +36,40 @@
 <span class="kn">from</span> <span class="nn">goblin</span> <span class="k">import</span> <span class="n">properties</span>
 
 
-<div class="viewcode-block" id="PackageVersion"><a class="viewcode-back" href="../../../../thoth.storages.graph.html#thoth.storages.graph.models.PackageVersion">[docs]</a><span class="k">class</span> <span class="nc">PackageVersion</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">Vertex</span><span class="p">):</span>
+<div class="viewcode-block" id="VertexBase"><a class="viewcode-back" href="../../../../thoth.storages.graph.html#thoth.storages.graph.models.VertexBase">[docs]</a><span class="k">class</span> <span class="nc">VertexBase</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">Vertex</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A base class for edges that extends Goblin&#39;s vertex implementation.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="VertexBase.create"><a class="viewcode-back" href="../../../../thoth.storages.graph.html#thoth.storages.graph.models.VertexBase.create">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">vertex_properties</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create vertex based on its properties.</span>
+
+<span class="sd">        See :meth:`thoth.storages.graph.models.EdgeBase.create`.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">vertex_properties</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="EdgeBase"><a class="viewcode-back" href="../../../../thoth.storages.graph.html#thoth.storages.graph.models.EdgeBase">[docs]</a><span class="k">class</span> <span class="nc">EdgeBase</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">Edge</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A base class for edges that extends Goblin&#39;s edge implementation.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="EdgeBase.create"><a class="viewcode-back" href="../../../../thoth.storages.graph.html#thoth.storages.graph.models.EdgeBase.create">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">edge_properties</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create edge based on its properties.</span>
+
+<span class="sd">        &gt;&gt;&gt; source_node = PackageVersion.create(ecosystem=&#39;pypi&#39;, name=&#39;selinon&#39;, version=&#39;1.0.0rc1&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; target_node = PackageVersion.create(ecosystem=&#39;pypi&#39;, name=&#39;pyyaml&#39;, version=&#39;1.0.0&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; edge = DependsOn.create(version_range=&#39;&gt;=10&#39;, source=source_node, target=target_node)</span>
+<span class="sd">        &quot;&quot;&quot;</span></div></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">edge_properties</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="PackageVersion"><a class="viewcode-back" href="../../../../thoth.storages.graph.html#thoth.storages.graph.models.PackageVersion">[docs]</a><span class="k">class</span> <span class="nc">PackageVersion</span><span class="p">(</span><span class="n">VertexBase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Package-version node in graph representing any versioned package.&quot;&quot;&quot;</span>
     <span class="n">ecosystem</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Property</span><span class="p">(</span><span class="n">properties</span><span class="o">.</span><span class="n">String</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Property</span><span class="p">(</span><span class="n">properties</span><span class="o">.</span><span class="n">String</span><span class="p">)</span></div>
     <span class="n">version</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Property</span><span class="p">(</span><span class="n">properties</span><span class="o">.</span><span class="n">String</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="DependsOn"><a class="viewcode-back" href="../../../../thoth.storages.graph.html#thoth.storages.graph.models.DependsOn">[docs]</a><span class="k">class</span> <span class="nc">DependsOn</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">Edge</span><span class="p">):</span>
+<div class="viewcode-block" id="DependsOn"><a class="viewcode-back" href="../../../../thoth.storages.graph.html#thoth.storages.graph.models.DependsOn">[docs]</a><span class="k">class</span> <span class="nc">DependsOn</span><span class="p">(</span><span class="n">EdgeBase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Dependency between packages modeling.&quot;&quot;&quot;</span>
     <span class="n">version_range</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Property</span><span class="p">(</span><span class="n">properties</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">)</span></div>
     <span class="n">document_id</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Property</span><span class="p">(</span><span class="n">properties</span><span class="o">.</span><span class="n">String</span><span class="p">)</span>

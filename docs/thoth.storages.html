@@ -54,38 +54,12 @@
 <p>Adapter for storing analysis results onto a persistence remote store.</p>
 <dl class="class">
 <dt id="thoth.storages.analyses.AnalysisResultsStore">
-<em class="property">class </em><code class="descclassname">thoth.storages.analyses.</code><code class="descname">AnalysisResultsStore</code><span class="sig-paren">(</span><em>host: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/analyses.html#AnalysisResultsStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.analyses.AnalysisResultsStore" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#thoth.storages.base.StorageBase" title="thoth.storages.base.StorageBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">thoth.storages.base.StorageBase</span></code></a></p>
-<p>Adapter for storing analysis results.</p>
-<dl class="method">
-<dt id="thoth.storages.analyses.AnalysisResultsStore.connect">
-<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/analyses.html#AnalysisResultsStore.connect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.analyses.AnalysisResultsStore.connect" title="Permalink to this definition">¶</a></dt>
-<dd><p>Connect the given storage adapter.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="thoth.storages.analyses.AnalysisResultsStore.get_result_listing">
-<code class="descname">get_result_listing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/analyses.html#AnalysisResultsStore.get_result_listing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.analyses.AnalysisResultsStore.get_result_listing" title="Permalink to this definition">¶</a></dt>
-<dd><p>List all available analysis results stored.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="thoth.storages.analyses.AnalysisResultsStore.is_connected">
-<code class="descname">is_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/thoth/storages/analyses.html#AnalysisResultsStore.is_connected"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.analyses.AnalysisResultsStore.is_connected" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if the given database adapter is in connected state.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="thoth.storages.analyses.AnalysisResultsStore.retrieve_by_document_id">
-<code class="descname">retrieve_by_document_id</code><span class="sig-paren">(</span><em>document_id: str</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/thoth/storages/analyses.html#AnalysisResultsStore.retrieve_by_document_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.analyses.AnalysisResultsStore.retrieve_by_document_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve document stored in analysis results store by its ID.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="thoth.storages.analyses.AnalysisResultsStore.store_document">
-<code class="descname">store_document</code><span class="sig-paren">(</span><em>content: dict</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/thoth/storages/analyses.html#AnalysisResultsStore.store_document"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.analyses.AnalysisResultsStore.store_document" title="Permalink to this definition">¶</a></dt>
-<dd><p>Store the given document content, return an ID of the stored document.</p>
-</dd></dl>
+<em class="property">class </em><code class="descclassname">thoth.storages.analyses.</code><code class="descname">AnalysisResultsStore</code><span class="sig-paren">(</span><em>*</em>, <em>host: str = None</em>, <em>key_id: str = None</em>, <em>secret_key: str = None</em>, <em>bucket: str = None</em>, <em>region: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/analyses.html#AnalysisResultsStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.analyses.AnalysisResultsStore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#thoth.storages.result_base.ResultStorageBase" title="thoth.storages.result_base.ResultStorageBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">thoth.storages.result_base.ResultStorageBase</span></code></a></p>
+<dl class="attribute">
+<dt id="thoth.storages.analyses.AnalysisResultsStore.RESULT_TYPE">
+<code class="descname">RESULT_TYPE</code><em class="property"> = 'analysis'</em><a class="headerlink" href="#thoth.storages.analyses.AnalysisResultsStore.RESULT_TYPE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -113,6 +87,205 @@
 </dd></dl>
 
 </div>
+<div class="section" id="module-thoth.storages.buildlogs">
+<span id="thoth-storages-buildlogs-module"></span><h2>thoth.storages.buildlogs module<a class="headerlink" href="#module-thoth.storages.buildlogs" title="Permalink to this headline">¶</a></h2>
+<p>Adapter for storing build logs.</p>
+<dl class="class">
+<dt id="thoth.storages.buildlogs.BuildLogsStore">
+<em class="property">class </em><code class="descclassname">thoth.storages.buildlogs.</code><code class="descname">BuildLogsStore</code><span class="sig-paren">(</span><em>*</em>, <em>host: str = None</em>, <em>key_id: str = None</em>, <em>secret_key: str = None</em>, <em>bucket: str = None</em>, <em>region: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/buildlogs.html#BuildLogsStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.buildlogs.BuildLogsStore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#thoth.storages.base.StorageBase" title="thoth.storages.base.StorageBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">thoth.storages.base.StorageBase</span></code></a></p>
+<dl class="attribute">
+<dt id="thoth.storages.buildlogs.BuildLogsStore.RESULT_TYPE">
+<code class="descname">RESULT_TYPE</code><em class="property"> = 'buildlogs'</em><a class="headerlink" href="#thoth.storages.buildlogs.BuildLogsStore.RESULT_TYPE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.buildlogs.BuildLogsStore.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/thoth/storages/buildlogs.html#BuildLogsStore.connect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.buildlogs.BuildLogsStore.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect the given storage adapter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.buildlogs.BuildLogsStore.get_document_listing">
+<code class="descname">get_document_listing</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Generator[[str, NoneType], NoneType]<a class="reference internal" href="_modules/thoth/storages/buildlogs.html#BuildLogsStore.get_document_listing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.buildlogs.BuildLogsStore.get_document_listing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get listing of documents stored on the Ceph.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.buildlogs.BuildLogsStore.is_connected">
+<code class="descname">is_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/thoth/storages/buildlogs.html#BuildLogsStore.is_connected"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.buildlogs.BuildLogsStore.is_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given database adapter is in connected state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.buildlogs.BuildLogsStore.iterate_results">
+<code class="descname">iterate_results</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Generator[[tuple, NoneType], NoneType]<a class="reference internal" href="_modules/thoth/storages/buildlogs.html#BuildLogsStore.iterate_results"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.buildlogs.BuildLogsStore.iterate_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate over results available in the Ceph.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.buildlogs.BuildLogsStore.retrieve_document">
+<code class="descname">retrieve_document</code><span class="sig-paren">(</span><em>document_id: str</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/thoth/storages/buildlogs.html#BuildLogsStore.retrieve_document"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.buildlogs.BuildLogsStore.retrieve_document" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a document from Ceph by its id.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.buildlogs.BuildLogsStore.store_document">
+<code class="descname">store_document</code><span class="sig-paren">(</span><em>document: dict</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/thoth/storages/buildlogs.html#BuildLogsStore.store_document"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.buildlogs.BuildLogsStore.store_document" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store the given document in Ceph.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-thoth.storages.ceph">
+<span id="thoth-storages-ceph-module"></span><h2>thoth.storages.ceph module<a class="headerlink" href="#module-thoth.storages.ceph" title="Permalink to this headline">¶</a></h2>
+<p>Adapter for Ceph distributed object storage.</p>
+<dl class="class">
+<dt id="thoth.storages.ceph.CephStore">
+<em class="property">class </em><code class="descclassname">thoth.storages.ceph.</code><code class="descname">CephStore</code><span class="sig-paren">(</span><em>result_type</em>, <em>*</em>, <em>host: str = None</em>, <em>key_id: str = None</em>, <em>secret_key: str = None</em>, <em>bucket: str = None</em>, <em>region: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/ceph.html#CephStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.ceph.CephStore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#thoth.storages.base.StorageBase" title="thoth.storages.base.StorageBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">thoth.storages.base.StorageBase</span></code></a></p>
+<p>Adapter for storing analysis results.</p>
+<dl class="method">
+<dt id="thoth.storages.ceph.CephStore.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/thoth/storages/ceph.html#CephStore.connect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.ceph.CephStore.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a connection to the remote Ceph.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="thoth.storages.ceph.CephStore.dict2blob">
+<em class="property">static </em><code class="descname">dict2blob</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bytes<a class="reference internal" href="_modules/thoth/storages/ceph.html#CephStore.dict2blob"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.ceph.CephStore.dict2blob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encode a dictionary to a blob so it can be stored on Ceph.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.ceph.CephStore.document_exists">
+<code class="descname">document_exists</code><span class="sig-paren">(</span><em>document_id: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/thoth/storages/ceph.html#CephStore.document_exists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.ceph.CephStore.document_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the there is an object with the given key in bucket, does only HEAD request.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.ceph.CephStore.get_document_listing">
+<code class="descname">get_document_listing</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Generator[[str, NoneType], NoneType]<a class="reference internal" href="_modules/thoth/storages/ceph.html#CephStore.get_document_listing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.ceph.CephStore.get_document_listing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get listing of documents stored on the Ceph.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.ceph.CephStore.is_connected">
+<code class="descname">is_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/thoth/storages/ceph.html#CephStore.is_connected"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.ceph.CephStore.is_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether adapter is already connected to the remote Ceph storage.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.ceph.CephStore.iterate_results">
+<code class="descname">iterate_results</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Generator[[tuple, NoneType], NoneType]<a class="reference internal" href="_modules/thoth/storages/ceph.html#CephStore.iterate_results"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.ceph.CephStore.iterate_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate over results available in the Ceph.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.ceph.CephStore.retrieve_document">
+<code class="descname">retrieve_document</code><span class="sig-paren">(</span><em>document_id: str</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/thoth/storages/ceph.html#CephStore.retrieve_document"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.ceph.CephStore.retrieve_document" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a dictionary stored as JSON from S3.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.ceph.CephStore.store_blob">
+<code class="descname">store_blob</code><span class="sig-paren">(</span><em>blob: bytes</em>, <em>object_key: str</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/thoth/storages/ceph.html#CephStore.store_blob"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.ceph.CephStore.store_blob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store a blob on Ceph.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.ceph.CephStore.store_document">
+<code class="descname">store_document</code><span class="sig-paren">(</span><em>document: dict</em>, <em>document_id: str</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/thoth/storages/ceph.html#CephStore.store_document"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.ceph.CephStore.store_document" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store a document (dict) onto Ceph.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-thoth.storages.exceptions">
+<span id="thoth-storages-exceptions-module"></span><h2>thoth.storages.exceptions module<a class="headerlink" href="#module-thoth.storages.exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Exceptions for storage adapters and storage handling.</p>
+<dl class="exception">
+<dt id="thoth.storages.exceptions.NotFoundError">
+<em class="property">exception </em><code class="descclassname">thoth.storages.exceptions.</code><code class="descname">NotFoundError</code><a class="reference internal" href="_modules/thoth/storages/exceptions.html#NotFoundError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.exceptions.NotFoundError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#thoth.storages.exceptions.ThothStorageException" title="thoth.storages.exceptions.ThothStorageException"><code class="xref py py-class docutils literal notranslate"><span class="pre">thoth.storages.exceptions.ThothStorageException</span></code></a></p>
+<p>Raised if the given artifact cannot be found.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="thoth.storages.exceptions.SchemaError">
+<em class="property">exception </em><code class="descclassname">thoth.storages.exceptions.</code><code class="descname">SchemaError</code><a class="reference internal" href="_modules/thoth/storages/exceptions.html#SchemaError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.exceptions.SchemaError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#thoth.storages.exceptions.ThothStorageException" title="thoth.storages.exceptions.ThothStorageException"><code class="xref py py-class docutils literal notranslate"><span class="pre">thoth.storages.exceptions.ThothStorageException</span></code></a></p>
+<p>Raised if trying to store document with invalid schema.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="thoth.storages.exceptions.ThothStorageException">
+<em class="property">exception </em><code class="descclassname">thoth.storages.exceptions.</code><code class="descname">ThothStorageException</code><a class="reference internal" href="_modules/thoth/storages/exceptions.html#ThothStorageException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.exceptions.ThothStorageException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>A base exception for Thoth storage exception hierarchy.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-thoth.storages.result_base">
+<span id="thoth-storages-result-base-module"></span><h2>thoth.storages.result_base module<a class="headerlink" href="#module-thoth.storages.result_base" title="Permalink to this headline">¶</a></h2>
+<p>Adapter for storing analysis results onto a persistence remote store.</p>
+<dl class="class">
+<dt id="thoth.storages.result_base.ResultStorageBase">
+<em class="property">class </em><code class="descclassname">thoth.storages.result_base.</code><code class="descname">ResultStorageBase</code><span class="sig-paren">(</span><em>*</em>, <em>host: str = None</em>, <em>key_id: str = None</em>, <em>secret_key: str = None</em>, <em>bucket: str = None</em>, <em>region: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/result_base.html#ResultStorageBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.result_base.ResultStorageBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#thoth.storages.base.StorageBase" title="thoth.storages.base.StorageBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">thoth.storages.base.StorageBase</span></code></a></p>
+<p>Adapter base for storing results.</p>
+<dl class="attribute">
+<dt id="thoth.storages.result_base.ResultStorageBase.RESULT_TYPE">
+<code class="descname">RESULT_TYPE</code><em class="property"> = None</em><a class="headerlink" href="#thoth.storages.result_base.ResultStorageBase.RESULT_TYPE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.result_base.ResultStorageBase.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/thoth/storages/result_base.html#ResultStorageBase.connect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.result_base.ResultStorageBase.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect the given storage adapter.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="thoth.storages.result_base.ResultStorageBase.get_document_id">
+<em class="property">classmethod </em><code class="descname">get_document_id</code><span class="sig-paren">(</span><em>document: dict</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/thoth/storages/result_base.html#ResultStorageBase.get_document_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.result_base.ResultStorageBase.get_document_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get document id under which the given document should be stored.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.result_base.ResultStorageBase.get_document_listing">
+<code class="descname">get_document_listing</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Generator[[str, NoneType], NoneType]<a class="reference internal" href="_modules/thoth/storages/result_base.html#ResultStorageBase.get_document_listing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.result_base.ResultStorageBase.get_document_listing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get listing of documents available in Ceph as a generator.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.result_base.ResultStorageBase.is_connected">
+<code class="descname">is_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/thoth/storages/result_base.html#ResultStorageBase.is_connected"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.result_base.ResultStorageBase.is_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given database adapter is in connected state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.result_base.ResultStorageBase.iterate_results">
+<code class="descname">iterate_results</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Generator[[tuple, NoneType], NoneType]<a class="reference internal" href="_modules/thoth/storages/result_base.html#ResultStorageBase.iterate_results"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.result_base.ResultStorageBase.iterate_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate over results available in the Ceph.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.result_base.ResultStorageBase.retrieve_document">
+<code class="descname">retrieve_document</code><span class="sig-paren">(</span><em>document_id: str</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/thoth/storages/result_base.html#ResultStorageBase.retrieve_document"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.result_base.ResultStorageBase.retrieve_document" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a document from Ceph by its id.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.storages.result_base.ResultStorageBase.store_document">
+<code class="descname">store_document</code><span class="sig-paren">(</span><em>document: dict</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/thoth/storages/result_base.html#ResultStorageBase.store_document"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.result_base.ResultStorageBase.store_document" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store the given document in Ceph.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-thoth.storages.result_schema">
 <span id="thoth-storages-result-schema-module"></span><h2>thoth.storages.result_schema module<a class="headerlink" href="#module-thoth.storages.result_schema" title="Permalink to this headline">¶</a></h2>
 <p>Schema definition for analyzer results.</p>
@@ -129,54 +302,12 @@
 <p>Adapter for storing solver results onto a persistence remote store.</p>
 <dl class="class">
 <dt id="thoth.storages.solvers.SolverResultsStore">
-<em class="property">class </em><code class="descclassname">thoth.storages.solvers.</code><code class="descname">SolverResultsStore</code><span class="sig-paren">(</span><em>host: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/solvers.html#SolverResultsStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.solvers.SolverResultsStore" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#thoth.storages.base.StorageBase" title="thoth.storages.base.StorageBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">thoth.storages.base.StorageBase</span></code></a></p>
-<p>Adapter for storing solver results.</p>
+<em class="property">class </em><code class="descclassname">thoth.storages.solvers.</code><code class="descname">SolverResultsStore</code><span class="sig-paren">(</span><em>*</em>, <em>host: str = None</em>, <em>key_id: str = None</em>, <em>secret_key: str = None</em>, <em>bucket: str = None</em>, <em>region: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/solvers.html#SolverResultsStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.solvers.SolverResultsStore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#thoth.storages.result_base.ResultStorageBase" title="thoth.storages.result_base.ResultStorageBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">thoth.storages.result_base.ResultStorageBase</span></code></a></p>
 <dl class="attribute">
-<dt id="thoth.storages.solvers.SolverResultsStore.DEFAULT_HOST">
-<code class="descname">DEFAULT_HOST</code><em class="property"> = 'http://localhost:8080'</em><a class="headerlink" href="#thoth.storages.solvers.SolverResultsStore.DEFAULT_HOST" title="Permalink to this definition">¶</a></dt>
+<dt id="thoth.storages.solvers.SolverResultsStore.RESULT_TYPE">
+<code class="descname">RESULT_TYPE</code><em class="property"> = 'solver'</em><a class="headerlink" href="#thoth.storages.solvers.SolverResultsStore.RESULT_TYPE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="attribute">
-<dt id="thoth.storages.solvers.SolverResultsStore.ENVVAR_HOST">
-<code class="descname">ENVVAR_HOST</code><em class="property"> = 'THOTH_SOLVER_RESULTS_STORE_HOST'</em><a class="headerlink" href="#thoth.storages.solvers.SolverResultsStore.ENVVAR_HOST" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="thoth.storages.solvers.SolverResultsStore.connect">
-<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/solvers.html#SolverResultsStore.connect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.solvers.SolverResultsStore.connect" title="Permalink to this definition">¶</a></dt>
-<dd><p>Connect the given storage adapter.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="thoth.storages.solvers.SolverResultsStore.get_result_listing">
-<code class="descname">get_result_listing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/solvers.html#SolverResultsStore.get_result_listing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.solvers.SolverResultsStore.get_result_listing" title="Permalink to this definition">¶</a></dt>
-<dd><p>List all available solver results stored.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="thoth.storages.solvers.SolverResultsStore.is_connected">
-<code class="descname">is_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/thoth/storages/solvers.html#SolverResultsStore.is_connected"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.solvers.SolverResultsStore.is_connected" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if the given database adapter is in connected state.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="thoth.storages.solvers.SolverResultsStore.iterate_results">
-<code class="descname">iterate_results</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/solvers.html#SolverResultsStore.iterate_results"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.solvers.SolverResultsStore.iterate_results" title="Permalink to this definition">¶</a></dt>
-<dd><p>Iterate over available solver results, yielding one document at the time.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="thoth.storages.solvers.SolverResultsStore.retrieve_by_document_id">
-<code class="descname">retrieve_by_document_id</code><span class="sig-paren">(</span><em>document_id: str</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/thoth/storages/solvers.html#SolverResultsStore.retrieve_by_document_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.solvers.SolverResultsStore.retrieve_by_document_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve document stored in solver results store by its ID.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="thoth.storages.solvers.SolverResultsStore.store_document">
-<code class="descname">store_document</code><span class="sig-paren">(</span><em>content: dict</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/thoth/storages/solvers.html#SolverResultsStore.store_document"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.solvers.SolverResultsStore.store_document" title="Permalink to this definition">¶</a></dt>
-<dd><p>Store the given document content, return an ID of the stored document.</p>
-</dd></dl>
 
 </dd></dl>
 
@@ -196,6 +327,10 @@
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-thoth.storages.analyses">thoth.storages.analyses module</a></li>
 <li><a class="reference internal" href="#module-thoth.storages.base">thoth.storages.base module</a></li>
+<li><a class="reference internal" href="#module-thoth.storages.buildlogs">thoth.storages.buildlogs module</a></li>
+<li><a class="reference internal" href="#module-thoth.storages.ceph">thoth.storages.ceph module</a></li>
+<li><a class="reference internal" href="#module-thoth.storages.exceptions">thoth.storages.exceptions module</a></li>
+<li><a class="reference internal" href="#module-thoth.storages.result_base">thoth.storages.result_base module</a></li>
 <li><a class="reference internal" href="#module-thoth.storages.result_schema">thoth.storages.result_schema module</a></li>
 <li><a class="reference internal" href="#module-thoth.storages.solvers">thoth.storages.solvers module</a></li>
 </ul>
