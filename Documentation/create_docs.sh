@@ -23,3 +23,5 @@ PYTHONPATH="${workdir}/venv/lib/python3.6/site-packages" make -C output html
 rm -rf ../docs
 mv output/_build/html ../docs
 rm -rf output venv clones thoth
+# Tell GitHub that we are not using Jekyll
+touch ../docs/.nojekyll
