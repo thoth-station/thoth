@@ -78,6 +78,30 @@ implement default like this:</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-thoth.common.logging">
+<span id="thoth-common-logging-module"></span><h2>thoth.common.logging module<a class="headerlink" href="#module-thoth.common.logging" title="Permalink to this headline">¶</a></h2>
+<p>Logging configuration for whole Thoth.</p>
+<dl class="function">
+<dt id="thoth.common.logging.init_logging">
+<code class="descclassname">thoth.common.logging.</code><code class="descname">init_logging</code><span class="sig-paren">(</span><em>logging_configuration: dict = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/thoth/common/logging.html#init_logging"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.common.logging.init_logging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize Thoth’s logging - respects all namespaces.</p>
+<p>This function allows you to control logging facilities in Thoth. Logging can be configured via env variables
+so that deployment can respect your configuration. The structure of environment variables is THOTH_LOG_&lt;MODULE&gt;
+and the value of env variable states verbosity level as in the logging module (DEBUG, INFO, WARNING, ERROR).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;THOTH_LOG_SOLVER&#39;</span><span class="p">]</span>
+<span class="go">WARNING</span>
+</pre></div>
+</div>
+<p>You can also specify more closely which sub-module logging you are configuring - submodules are separated with dash:
+&gt;&gt;&gt; os.environ[‘THOTH_LOG_SOLVER_PYTHON’]
+DEBUG</p>
+<p>You can also use arguments explicitly that override configuration in env variables (a shorthand for
+standard logging functionality):
+&gt;&gt;&gt; init_logging({‘thoth.solver’: ‘DEBUG’})</p>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -92,6 +116,7 @@ implement default like this:</p>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-thoth.common.helpers">thoth.common.helpers module</a></li>
 <li><a class="reference internal" href="#module-thoth.common.json">thoth.common.json module</a></li>
+<li><a class="reference internal" href="#module-thoth.common.logging">thoth.common.logging module</a></li>
 </ul>
 </li>
 </ul>
@@ -133,7 +158,7 @@ implement default like this:</p>
       &copy;2018, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

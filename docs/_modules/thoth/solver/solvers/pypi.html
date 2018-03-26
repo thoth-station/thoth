@@ -98,8 +98,8 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">releases</span><span class="p">:</span>
             <span class="c1"># if nothing was found then do case-insensitive search</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fetch_releases</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_search_package_name</span><span class="p">(</span><span class="n">package</span><span class="p">))</span>
-</div></div>
-        <span class="k">return</span> <span class="n">package</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">releases</span>
+
+        <span class="k">return</span> <span class="n">package</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">releases</span></div></div>
 
 
 <div class="viewcode-block" id="PypiDependencyParser"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiDependencyParser">[docs]</a><span class="k">class</span> <span class="nc">PypiDependencyParser</span><span class="p">(</span><span class="n">DependencyParser</span><span class="p">):</span>
@@ -160,22 +160,22 @@
             <span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
             <span class="n">parsed</span> <span class="o">=</span> <span class="n">parse_requirements</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
             <span class="n">dependency</span> <span class="o">=</span> <span class="p">[</span><span class="n">Dependency</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">_get_pip_spec</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">req</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">parsed</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-</div>
-        <span class="k">return</span> <span class="n">dependency</span>
+
+        <span class="k">return</span> <span class="n">dependency</span></div>
 
 <div class="viewcode-block" id="PypiDependencyParser.parse"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiDependencyParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">specs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Parse specs.&quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_python</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">]</span>
+        <span class="sd">&quot;&quot;&quot;Parse specs.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_python</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="PypiDependencyParser.compose"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiDependencyParser.compose">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">compose</span><span class="p">(</span><span class="n">deps</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compose deps.&quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="n">DependencyParser</span><span class="o">.</span><span class="n">compose_sep</span><span class="p">(</span><span class="n">deps</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;Compose deps.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DependencyParser</span><span class="o">.</span><span class="n">compose_sep</span><span class="p">(</span><span class="n">deps</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PypiDependencyParser.restrict_versions"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiDependencyParser.restrict_versions">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">restrict_versions</span><span class="p">(</span><span class="n">deps</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Not implemented.&quot;&quot;&quot;</span></div></div>
-        <span class="k">return</span> <span class="n">deps</span>  <span class="c1"># TODO</span>
+        <span class="sd">&quot;&quot;&quot;Not implemented.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">deps</span>  <span class="c1"># TODO</span></div></div>
 
 
 <div class="viewcode-block" id="PypiSolver"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.pypi.PypiSolver">[docs]</a><span class="k">class</span> <span class="nc">PypiSolver</span><span class="p">(</span><span class="n">Solver</span><span class="p">):</span>
@@ -184,8 +184,8 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fetcher_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">solver_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize instance.&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">PypiDependencyParser</span><span class="p">(</span><span class="o">**</span><span class="p">(</span><span class="n">parser_kwargs</span> <span class="ow">or</span> <span class="p">{})),</span>
-                         <span class="n">PypiReleasesFetcher</span><span class="p">(</span><span class="o">**</span><span class="p">(</span><span class="n">fetcher_kwargs</span> <span class="ow">or</span> <span class="p">{})),</span></div>
-                         <span class="o">**</span><span class="p">(</span><span class="n">solver_kwargs</span> <span class="ow">or</span> <span class="p">{}))</span>
+                         <span class="n">PypiReleasesFetcher</span><span class="p">(</span><span class="o">**</span><span class="p">(</span><span class="n">fetcher_kwargs</span> <span class="ow">or</span> <span class="p">{})),</span>
+                         <span class="o">**</span><span class="p">(</span><span class="n">solver_kwargs</span> <span class="ow">or</span> <span class="p">{}))</span></div>
 </pre></div>
 
           </div>
@@ -221,7 +221,7 @@
       &copy;2018, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
     </div>

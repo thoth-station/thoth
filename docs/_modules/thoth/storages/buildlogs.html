@@ -33,6 +33,7 @@
 <span></span><span class="sd">&quot;&quot;&quot;Adapter for storing build logs.&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">typing</span>
 
 <span class="kn">from</span> <span class="nn">.ceph</span> <span class="k">import</span> <span class="n">CephStore</span>
@@ -42,9 +43,12 @@
 <div class="viewcode-block" id="BuildLogsStore"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore">[docs]</a><span class="k">class</span> <span class="nc">BuildLogsStore</span><span class="p">(</span><span class="n">StorageBase</span><span class="p">):</span>
     <span class="n">RESULT_TYPE</span> <span class="o">=</span> <span class="s1">&#39;buildlogs&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">host</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">key_id</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">region</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deployment_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                 <span class="n">host</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">key_id</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bucket</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">region</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deployment_name</span> <span class="o">=</span> <span class="n">deployment_name</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;THOTH_DEPLOYMENT_NAME&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">deployment_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">RESULT_TYPE</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ceph</span> <span class="o">=</span> <span class="n">CephStore</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">RESULT_TYPE</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span>
             <span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span>
             <span class="n">key_id</span><span class="o">=</span><span class="n">key_id</span><span class="p">,</span>
             <span class="n">secret_key</span><span class="o">=</span><span class="n">secret_key</span><span class="p">,</span>
@@ -53,31 +57,31 @@
         <span class="p">)</span>
 
 <div class="viewcode-block" id="BuildLogsStore.is_connected"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore.is_connected">[docs]</a>    <span class="k">def</span> <span class="nf">is_connected</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Check if the given database adapter is in connected state.&quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ceph</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="sd">&quot;&quot;&quot;Check if the given database adapter is in connected state.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ceph</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="BuildLogsStore.connect"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore.connect">[docs]</a>    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Connect the given storage adapter.&quot;&quot;&quot;</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ceph</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+        <span class="sd">&quot;&quot;&quot;Connect the given storage adapter.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ceph</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="BuildLogsStore.store_document"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore.store_document">[docs]</a>    <span class="k">def</span> <span class="nf">store_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Store the given document in Ceph.&quot;&quot;&quot;</span>
         <span class="n">blob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ceph</span><span class="o">.</span><span class="n">dict2blob</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
         <span class="n">document_id</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">blob</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ceph</span><span class="o">.</span><span class="n">store_blob</span><span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="n">document_id</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">document_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ceph</span><span class="o">.</span><span class="n">store_blob</span><span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="n">document_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">document_id</span></div>
 
 <div class="viewcode-block" id="BuildLogsStore.retrieve_document"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore.retrieve_document">[docs]</a>    <span class="k">def</span> <span class="nf">retrieve_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Retrieve a document from Ceph by its id.&quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ceph</span><span class="o">.</span><span class="n">retrieve_document</span><span class="p">(</span><span class="n">document_id</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;Retrieve a document from Ceph by its id.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ceph</span><span class="o">.</span><span class="n">retrieve_document</span><span class="p">(</span><span class="n">document_id</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BuildLogsStore.iterate_results"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore.iterate_results">[docs]</a>    <span class="k">def</span> <span class="nf">iterate_results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Generator</span><span class="p">[</span><span class="nb">tuple</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Iterate over results available in the Ceph.&quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ceph</span><span class="o">.</span><span class="n">iterate_results</span><span class="p">()</span>
+        <span class="sd">&quot;&quot;&quot;Iterate over results available in the Ceph.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ceph</span><span class="o">.</span><span class="n">iterate_results</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="BuildLogsStore.get_document_listing"><a class="viewcode-back" href="../../../thoth.storages.html#thoth.storages.buildlogs.BuildLogsStore.get_document_listing">[docs]</a>    <span class="k">def</span> <span class="nf">get_document_listing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Generator</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Get listing of documents stored on the Ceph.&quot;&quot;&quot;</span></div></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ceph</span><span class="o">.</span><span class="n">get_document_listing</span><span class="p">()</span>
+        <span class="sd">&quot;&quot;&quot;Get listing of documents stored on the Ceph.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ceph</span><span class="o">.</span><span class="n">get_document_listing</span><span class="p">()</span></div></div>
 </pre></div>
 
           </div>
@@ -113,7 +117,7 @@
       &copy;2018, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
     </div>

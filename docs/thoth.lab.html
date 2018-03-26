@@ -37,18 +37,64 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="module-thoth.lab.graph">
+<span id="thoth-lab-graph-module"></span><h2>thoth.lab.graph module<a class="headerlink" href="#module-thoth.lab.graph" title="Permalink to this headline">¶</a></h2>
+<p>Various helpers and utils for interaction with the graph database.</p>
+<dl class="class">
+<dt id="thoth.lab.graph.GraphQueryResult">
+<em class="property">class </em><code class="descclassname">thoth.lab.graph.</code><code class="descname">GraphQueryResult</code><span class="sig-paren">(</span><em>result</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/lab/graph.html#GraphQueryResult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.lab.graph.GraphQueryResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="thoth.lab.graph.GraphQueryResult.plot_bar">
+<code class="descname">plot_bar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/lab/graph.html#GraphQueryResult.plot_bar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.lab.graph.GraphQueryResult.plot_bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot histogram of results obtained.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.lab.graph.GraphQueryResult.plot_pie">
+<code class="descname">plot_pie</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/lab/graph.html#GraphQueryResult.plot_pie"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.lab.graph.GraphQueryResult.plot_pie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot a pie of results into Jupyter notebook.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.lab.graph.GraphQueryResult.serialize">
+<code class="descname">serialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/lab/graph.html#GraphQueryResult.serialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.lab.graph.GraphQueryResult.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize the output of graph query.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="thoth.lab.graph.GraphQueryResult.to_dataframe">
+<code class="descname">to_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/lab/graph.html#GraphQueryResult.to_dataframe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.lab.graph.GraphQueryResult.to_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a panda’s dataframe on results.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-thoth.lab.utils">
 <span id="thoth-lab-utils-module"></span><h2>thoth.lab.utils module<a class="headerlink" href="#module-thoth.lab.utils" title="Permalink to this headline">¶</a></h2>
 <p>Various utilities for notebooks.</p>
 <dl class="function">
+<dt id="thoth.lab.utils.display_page">
+<code class="descclassname">thoth.lab.utils.</code><code class="descname">display_page</code><span class="sig-paren">(</span><em>location: str</em>, <em>verify: bool = True</em>, <em>no_obtain_location: bool = False</em>, <em>width: int = 980</em>, <em>height: int = 900</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/lab/utils.html#display_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.lab.utils.display_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the given page in notebook as iframe.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="thoth.lab.utils.obtain_location">
-<code class="descclassname">thoth.lab.utils.</code><code class="descname">obtain_location</code><span class="sig-paren">(</span><em>name: str</em>, <em>verify: bool = True</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/thoth/lab/utils.html#obtain_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.lab.utils.obtain_location" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">thoth.lab.utils.</code><code class="descname">obtain_location</code><span class="sig-paren">(</span><em>name: str</em>, <em>verify: bool = True</em>, <em>only_netloc: bool = False</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/thoth/lab/utils.html#obtain_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.lab.utils.obtain_location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Obtain location of a service based on it’s name in Red Hat’s internal network.</p>
 <p>This function basically checks redirect of URL registered at Red Hat’s internal network. By doing so it
 is prevented to expose internal URLs. There is queried <a class="reference external" href="https://url.corp.redhat.com">https://url.corp.redhat.com</a> for redirects.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">obtain_location</span><span class="p">(</span><span class="s1">&#39;thoth-sbu&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="function">
+<dt id="thoth.lab.utils.packages_info">
+<code class="descclassname">thoth.lab.utils.</code><code class="descname">packages_info</code><span class="sig-paren">(</span><em>thoth_packages: bool = True</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="reference internal" href="_modules/thoth/lab/utils.html#packages_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.lab.utils.packages_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display information about versions of packages available in the installation.</p>
 </dd></dl>
 
 </div>
@@ -64,6 +110,7 @@ is prevented to expose internal URLs. There is queried <a class="reference exter
   <ul>
 <li><a class="reference internal" href="#">thoth.lab package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-thoth.lab.graph">thoth.lab.graph module</a></li>
 <li><a class="reference internal" href="#module-thoth.lab.utils">thoth.lab.utils module</a></li>
 </ul>
 </li>
@@ -106,7 +153,7 @@ is prevented to expose internal URLs. There is queried <a class="reference exter
       &copy;2018, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

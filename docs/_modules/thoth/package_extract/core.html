@@ -53,8 +53,8 @@
             <span class="s1">&#39;handler&#39;</span><span class="p">:</span> <span class="n">handler</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span>
             <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="n">handler</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">input_text</span><span class="p">)</span>
         <span class="p">})</span>
-</div>
-    <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">return</span> <span class="n">result</span></div>
 
 
 <div class="viewcode-block" id="extract_image"><a class="viewcode-back" href="../../../thoth.package_extract.html#thoth.package_extract.core.extract_image">[docs]</a><span class="k">def</span> <span class="nf">extract_image</span><span class="p">(</span><span class="n">image_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
@@ -64,8 +64,8 @@
 
         <span class="n">rootfs_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="s1">&#39;rootfs&#39;</span><span class="p">)</span>
         <span class="n">construct_rootfs</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="n">rootfs_path</span><span class="p">)</span>
-</div>
-        <span class="k">return</span> <span class="n">run_analyzers</span><span class="p">(</span><span class="n">rootfs_path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">run_analyzers</span><span class="p">(</span><span class="n">rootfs_path</span><span class="p">)</span></div>
 </pre></div>
 
           </div>
@@ -101,7 +101,7 @@
       &copy;2018, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
     </div>

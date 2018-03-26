@@ -146,16 +146,16 @@
                     <span class="n">tar_file</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">member</span><span class="p">,</span> <span class="n">set_attrs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                 <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
                     <span class="c1"># If the given file is present, there is raised an exception - remove file to prevent from errors.</span>
-                    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></div>
-                    <span class="n">tar_file</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">member</span><span class="p">,</span> <span class="n">set_attrs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">member</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                    <span class="n">tar_file</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">member</span><span class="p">,</span> <span class="n">set_attrs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="download_image"><a class="viewcode-back" href="../../../thoth.package_extract.html#thoth.package_extract.image.download_image">[docs]</a><span class="k">def</span> <span class="nf">download_image</span><span class="p">(</span><span class="n">image_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dir_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Download an image to dir_path.&quot;&quot;&quot;</span>
     <span class="n">_LOGGER</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Downloading image </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">image_name</span><span class="p">)</span>
     <span class="n">cmd</span> <span class="o">=</span> <span class="s1">&#39;skopeo copy docker://</span><span class="si">{image_name}</span><span class="s1"> dir:/</span><span class="si">{dir}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">image_name</span><span class="o">=</span><span class="n">image_name</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="n">dir_path</span><span class="p">)</span>
-    <span class="n">stdout</span> <span class="o">=</span> <span class="n">run_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span><span class="o">.</span><span class="n">stdout</span></div>
-    <span class="n">_LOGGER</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;skopeo stdout: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">stdout</span><span class="p">)</span>
+    <span class="n">stdout</span> <span class="o">=</span> <span class="n">run_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span><span class="o">.</span><span class="n">stdout</span>
+    <span class="n">_LOGGER</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;skopeo stdout: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">stdout</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="run_analyzers"><a class="viewcode-back" href="../../../thoth.package_extract.html#thoth.package_extract.image.run_analyzers">[docs]</a><span class="k">def</span> <span class="nf">run_analyzers</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
@@ -163,8 +163,8 @@
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;mercator&#39;</span><span class="p">:</span> <span class="n">_run_mercator</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">),</span>
         <span class="s1">&#39;rpm&#39;</span><span class="p">:</span> <span class="n">_run_rpm</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">),</span>
-        <span class="s1">&#39;rpm-dependencies&#39;</span><span class="p">:</span> <span class="n">_run_rpm_repoquery</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span></div>
-    <span class="p">}</span>
+        <span class="s1">&#39;rpm-dependencies&#39;</span><span class="p">:</span> <span class="n">_run_rpm_repoquery</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="p">}</span></div>
 </pre></div>
 
           </div>
@@ -200,7 +200,7 @@
       &copy;2018, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
     </div>

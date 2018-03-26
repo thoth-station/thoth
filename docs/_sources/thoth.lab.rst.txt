@@ -9,6 +9,14 @@ thoth.lab package
 Submodules
 ----------
 
+thoth.lab.graph module
+----------------------
+
+.. automodule:: thoth.lab.graph
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 thoth.lab.utils module
 ----------------------
 

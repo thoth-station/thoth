@@ -25,4 +25,12 @@ thoth.common.json module
     :undoc-members:
     :show-inheritance:
 
+thoth.common.logging module
+---------------------------
+
+.. automodule:: thoth.common.logging
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 

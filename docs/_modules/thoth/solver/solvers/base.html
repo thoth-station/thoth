@@ -38,15 +38,15 @@
 <span class="n">_LOGGER</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="SolverException"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.SolverException">[docs]</a><span class="k">class</span> <span class="nc">SolverException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span></div>
-    <span class="sd">&quot;&quot;&quot;Exception to be raised in Solver.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="SolverException"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.SolverException">[docs]</a><span class="k">class</span> <span class="nc">SolverException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Exception to be raised in Solver.&quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="Tokens"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.Tokens">[docs]</a><span class="k">class</span> <span class="nc">Tokens</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Comparison token representation.&quot;&quot;&quot;</span>
 
-    <span class="n">operators</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;==&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="s1">&#39;!=&#39;</span><span class="p">]</span></div>
-    <span class="p">(</span><span class="n">GTE</span><span class="p">,</span> <span class="n">LTE</span><span class="p">,</span> <span class="n">EQ1</span><span class="p">,</span> <span class="n">GT</span><span class="p">,</span> <span class="n">LT</span><span class="p">,</span> <span class="n">EQ2</span><span class="p">,</span> <span class="n">NEQ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">operators</span><span class="p">))</span>
+    <span class="n">operators</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;==&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="s1">&#39;!=&#39;</span><span class="p">]</span>
+    <span class="p">(</span><span class="n">GTE</span><span class="p">,</span> <span class="n">LTE</span><span class="p">,</span> <span class="n">EQ1</span><span class="p">,</span> <span class="n">GT</span><span class="p">,</span> <span class="n">LT</span><span class="p">,</span> <span class="n">EQ2</span><span class="p">,</span> <span class="n">NEQ</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">operators</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="compare_version"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.compare_version">[docs]</a><span class="k">def</span> <span class="nf">compare_version</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -101,16 +101,16 @@
             <span class="k">return</span> <span class="n">_append_zeros</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ly</span> <span class="o">-</span> <span class="n">lx</span><span class="p">),</span> <span class="n">y</span>
 
     <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">_cardinal</span><span class="p">(</span><span class="n">_range</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">_range</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-</div>
-    <span class="k">return</span> <span class="p">(</span><span class="n">left</span> <span class="o">&gt;</span> <span class="n">right</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">left</span> <span class="o">&gt;</span> <span class="n">right</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ReleasesFetcher"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.ReleasesFetcher">[docs]</a><span class="k">class</span> <span class="nc">ReleasesFetcher</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base class for fetching releases.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ReleasesFetcher.fetch_releases"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.ReleasesFetcher.fetch_releases">[docs]</a>    <span class="k">def</span> <span class="nf">fetch_releases</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">package</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Abstract method for getting list of releases versions.&quot;&quot;&quot;</span></div></div>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+        <span class="sd">&quot;&quot;&quot;Abstract method for getting list of releases versions.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div></div>
 
 
 <div class="viewcode-block" id="Dependency"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.Dependency">[docs]</a><span class="k">class</span> <span class="nc">Dependency</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -182,8 +182,8 @@
                 <span class="n">intermediaries</span> <span class="o">|=</span> <span class="n">intermediary</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
                 <span class="n">results</span> <span class="o">|=</span> <span class="n">_compare_spec</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
-</div></div>
-        <span class="k">return</span> <span class="n">results</span> <span class="ow">or</span> <span class="n">intermediaries</span>
+
+        <span class="k">return</span> <span class="n">results</span> <span class="ow">or</span> <span class="n">intermediaries</span></div></div>
 
 
 <div class="viewcode-block" id="DependencyParser"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.DependencyParser">[docs]</a><span class="k">class</span> <span class="nc">DependencyParser</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -194,8 +194,8 @@
             <span class="k">raise</span> <span class="ne">NotImplementedError</span>
 
 <div class="viewcode-block" id="DependencyParser.parse"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.DependencyParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">specs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Abstract method for Dependency parsing.&quot;&quot;&quot;</span></div>
-        <span class="k">pass</span>
+        <span class="sd">&quot;&quot;&quot;Abstract method for Dependency parsing.&quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="DependencyParser.compose_sep"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.DependencyParser.compose_sep">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">compose_sep</span><span class="p">(</span><span class="n">deps</span><span class="p">,</span> <span class="n">separator</span><span class="p">):</span>
@@ -210,26 +210,26 @@
             <span class="k">if</span> <span class="n">dep</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
                 <span class="n">result</span><span class="p">[</span><span class="n">dep</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">separator</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">op</span> <span class="o">+</span> <span class="n">ver</span> <span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">ver</span> <span class="ow">in</span> <span class="n">dep</span><span class="o">.</span><span class="n">spec</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">result</span><span class="p">[</span><span class="n">dep</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="n">separator</span> <span class="o">+</span> <span class="n">separator</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">op</span> <span class="o">+</span> <span class="n">ver</span> <span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">ver</span> <span class="ow">in</span> <span class="n">dep</span><span class="o">.</span><span class="n">spec</span><span class="p">])</span></div></div>
-        <span class="k">return</span> <span class="n">result</span>
+                <span class="n">result</span><span class="p">[</span><span class="n">dep</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="n">separator</span> <span class="o">+</span> <span class="n">separator</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">op</span> <span class="o">+</span> <span class="n">ver</span> <span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">ver</span> <span class="ow">in</span> <span class="n">dep</span><span class="o">.</span><span class="n">spec</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">result</span></div></div>
 
 
 <div class="viewcode-block" id="NoOpDependencyParser"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.NoOpDependencyParser">[docs]</a><span class="k">class</span> <span class="nc">NoOpDependencyParser</span><span class="p">(</span><span class="n">DependencyParser</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Dummy dependency parser for ecosystems that don&#39;t support version ranges.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="NoOpDependencyParser.parse"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.NoOpDependencyParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">specs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Transform list of dependencies (strings) to list of Dependency.&quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="p">[</span><span class="n">Dependency</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">]</span>
+        <span class="sd">&quot;&quot;&quot;Transform list of dependencies (strings) to list of Dependency.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">Dependency</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="NoOpDependencyParser.compose"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.NoOpDependencyParser.compose">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">compose</span><span class="p">(</span><span class="n">deps</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Opposite of parse().&quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="n">DependencyParser</span><span class="o">.</span><span class="n">compose_sep</span><span class="p">(</span><span class="n">deps</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;Opposite of parse().&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DependencyParser</span><span class="o">.</span><span class="n">compose_sep</span><span class="p">(</span><span class="n">deps</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="NoOpDependencyParser.restrict_versions"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.NoOpDependencyParser.restrict_versions">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">restrict_versions</span><span class="p">(</span><span class="n">deps</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Not implemented.&quot;&quot;&quot;</span></div></div>
-        <span class="k">return</span> <span class="n">deps</span>
+        <span class="sd">&quot;&quot;&quot;Not implemented.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">deps</span></div></div>
 
 
 <div class="viewcode-block" id="Solver"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.Solver">[docs]</a><span class="k">class</span> <span class="nc">Solver</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -290,8 +290,8 @@
                         <span class="n">solved</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">matching</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="n">solved</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">matching</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</div></div>
-        <span class="k">return</span> <span class="n">solved</span>
+
+        <span class="k">return</span> <span class="n">solved</span></div></div>
 
 
 <div class="viewcode-block" id="get_ecosystem_solver"><a class="viewcode-back" href="../../../../thoth.solver.solvers.html#thoth.solver.solvers.base.get_ecosystem_solver">[docs]</a><span class="k">def</span> <span class="nf">get_ecosystem_solver</span><span class="p">(</span><span class="n">ecosystem_name</span><span class="p">,</span> <span class="n">parser_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fetcher_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -306,8 +306,8 @@
 
     <span class="k">if</span> <span class="n">ecosystem_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;pypi&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">PypiSolver</span><span class="p">(</span><span class="n">parser_kwargs</span><span class="p">,</span> <span class="n">fetcher_kwargs</span><span class="p">)</span>
-</div>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Unknown ecosystem: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ecosystem_name</span><span class="p">))</span>
+
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Unknown ecosystem: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ecosystem_name</span><span class="p">))</span></div>
 </pre></div>
 
           </div>
@@ -343,7 +343,7 @@
       &copy;2018, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
     </div>

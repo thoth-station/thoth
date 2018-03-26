@@ -74,6 +74,12 @@
 <dd><p>Connect to a graph database via a websocket, use GraphSONSerializersV2d0.</p>
 </dd></dl>
 
+<dl class="classmethod">
+<dt id="thoth.storages.graph.janusgraph.GraphDatabase.create">
+<em class="property">classmethod </em><code class="descname">create</code><span class="sig-paren">(</span><em>host</em>, <em>port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/janusgraph.html#GraphDatabase.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a graph adapter, only for one host (syntax sugar).</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="thoth.storages.graph.janusgraph.GraphDatabase.disconnect">
 <code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/janusgraph.html#GraphDatabase.disconnect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.disconnect" title="Permalink to this definition">¶</a></dt>
@@ -90,6 +96,12 @@
 <dt id="thoth.storages.graph.janusgraph.GraphDatabase.is_connected">
 <code class="descname">is_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/janusgraph.html#GraphDatabase.is_connected"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.is_connected" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if we are connected to a remote Gremlin server.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="thoth.storages.graph.janusgraph.GraphDatabase.session">
+<code class="descname">session</code><a class="headerlink" href="#thoth.storages.graph.janusgraph.GraphDatabase.session" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns session to the graph database.</p>
 </dd></dl>
 
 <dl class="method">
@@ -147,6 +159,23 @@
 </pre></div>
 </div>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="thoth.storages.graph.models.Package">
+<em class="property">class </em><code class="descclassname">thoth.storages.graph.models.</code><code class="descname">Package</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/graph/models.html#Package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.graph.models.Package" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#thoth.storages.graph.models.VertexBase" title="thoth.storages.graph.models.VertexBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">thoth.storages.graph.models.VertexBase</span></code></a></p>
+<p>Package node in graph representing a package without version.</p>
+<dl class="attribute">
+<dt id="thoth.storages.graph.models.Package.ecosystem">
+<code class="descname">ecosystem</code><em class="property"> = 'ecosystem'</em><a class="headerlink" href="#thoth.storages.graph.models.Package.ecosystem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="thoth.storages.graph.models.Package.name">
+<code class="descname">name</code><em class="property"> = 'name'</em><a class="headerlink" href="#thoth.storages.graph.models.Package.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -243,7 +272,7 @@
       &copy;2018, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
