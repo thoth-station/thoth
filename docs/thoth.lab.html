@@ -82,7 +82,7 @@
 
 <dl class="function">
 <dt id="thoth.lab.utils.obtain_location">
-<code class="descclassname">thoth.lab.utils.</code><code class="descname">obtain_location</code><span class="sig-paren">(</span><em>name: str</em>, <em>verify: bool = True</em>, <em>only_netloc: bool = False</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/thoth/lab/utils.html#obtain_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.lab.utils.obtain_location" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">thoth.lab.utils.</code><code class="descname">obtain_location</code><span class="sig-paren">(</span><em>name: str</em>, <em>verify: bool = False</em>, <em>only_netloc: bool = False</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/thoth/lab/utils.html#obtain_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.lab.utils.obtain_location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Obtain location of a service based on it’s name in Red Hat’s internal network.</p>
 <p>This function basically checks redirect of URL registered at Red Hat’s internal network. By doing so it
 is prevented to expose internal URLs. There is queried <a class="reference external" href="https://url.corp.redhat.com">https://url.corp.redhat.com</a> for redirects.</p>

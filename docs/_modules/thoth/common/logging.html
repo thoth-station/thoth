@@ -49,8 +49,9 @@
 <span class="sd">    &gt;&gt;&gt; os.environ[&#39;THOTH_LOG_SOLVER&#39;]</span>
 <span class="sd">    WARNING</span>
 
-<span class="sd">    You can also specify more closely which sub-module logging you are configuring - submodules are separated with dash:</span>
-<span class="sd">    &gt;&gt;&gt; os.environ[&#39;THOTH_LOG_SOLVER_PYTHON&#39;]</span>
+<span class="sd">    You can also specify more closely which sub-module logging you are configuring - submodules are separated with</span>
+<span class="sd">    double dash:</span>
+<span class="sd">    &gt;&gt;&gt; os.environ[&#39;THOTH_LOG_SOLVER__t PYTHON&#39;]</span>
 <span class="sd">    DEBUG</span>
 
 <span class="sd">    You can also use arguments explicitly that override configuration in env variables (a shorthand for</span>
@@ -70,7 +71,7 @@
     <span class="p">}</span>
 
     <span class="k">for</span> <span class="n">logger</span><span class="p">,</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">env_logging_conf</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">logger</span> <span class="o">=</span> <span class="s1">&#39;thoth.&#39;</span> <span class="o">+</span> <span class="n">logger</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">_LOGGING_CONF_START</span><span class="p">):]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="s1">&#39;thoth.&#39;</span> <span class="o">+</span> <span class="n">logger</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">_LOGGING_CONF_START</span><span class="p">):]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
         <span class="n">level</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">logging</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
 

@@ -127,6 +127,33 @@
 </dd></dl>
 
 </div>
+<div class="section" id="module-thoth.package_extract.koji">
+<span id="thoth-package-extract-koji-module"></span><h2>thoth.package_extract.koji module<a class="headerlink" href="#module-thoth.package_extract.koji" title="Permalink to this headline">¶</a></h2>
+<p>Functionality copied from Koji.</p>
+<p>Even though copying code is not nice at all, this is better to have copied. Koji requires a bunch of dependencies
+to be present including things like gcc. We actually do not need these just for these two functions. Assuming naming
+is mature and stable enough, it should be safe to have them there.</p>
+<dl class="exception">
+<dt id="thoth.package_extract.koji.KojiError">
+<em class="property">exception </em><code class="descclassname">thoth.package_extract.koji.</code><code class="descname">KojiError</code><a class="reference internal" href="_modules/thoth/package_extract/koji.html#KojiError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.package_extract.koji.KojiError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>An exception that would be raised by Koji.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="thoth.package_extract.koji.parse_NVR">
+<code class="descclassname">thoth.package_extract.koji.</code><code class="descname">parse_NVR</code><span class="sig-paren">(</span><em>nvr</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/package_extract/koji.html#parse_NVR"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.package_extract.koji.parse_NVR" title="Permalink to this definition">¶</a></dt>
+<dd><p>split N-V-R into dictionary of data</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="thoth.package_extract.koji.parse_NVRA">
+<code class="descclassname">thoth.package_extract.koji.</code><code class="descname">parse_NVRA</code><span class="sig-paren">(</span><em>nvra: str</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/thoth/package_extract/koji.html#parse_NVRA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.package_extract.koji.parse_NVRA" title="Permalink to this definition">¶</a></dt>
+<dd><p>split N-V-R.A.rpm into dictionary of data</p>
+<p>also splits off &#64;location suffix</p>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -144,6 +171,7 @@
 <li><a class="reference internal" href="#module-thoth.package_extract.core">thoth.package_extract.core module</a></li>
 <li><a class="reference internal" href="#module-thoth.package_extract.exceptions">thoth.package_extract.exceptions module</a></li>
 <li><a class="reference internal" href="#module-thoth.package_extract.image">thoth.package_extract.image module</a></li>
+<li><a class="reference internal" href="#module-thoth.package_extract.koji">thoth.package_extract.koji module</a></li>
 </ul>
 </li>
 </ul>

@@ -48,4 +48,12 @@ thoth.package\_extract.image module
     :undoc-members:
     :show-inheritance:
 
+thoth.package\_extract.koji module
+----------------------------------
+
+.. automodule:: thoth.package_extract.koji
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 

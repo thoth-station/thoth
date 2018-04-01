@@ -93,8 +93,9 @@ and the value of env variable states verbosity level as in the logging module (D
 <span class="go">WARNING</span>
 </pre></div>
 </div>
-<p>You can also specify more closely which sub-module logging you are configuring - submodules are separated with dash:
-&gt;&gt;&gt; os.environ[‘THOTH_LOG_SOLVER_PYTHON’]
+<p>You can also specify more closely which sub-module logging you are configuring - submodules are separated with
+double dash:
+&gt;&gt;&gt; os.environ[‘THOTH_LOG_SOLVER__t PYTHON’]
 DEBUG</p>
 <p>You can also use arguments explicitly that override configuration in env variables (a shorthand for
 standard logging functionality):
