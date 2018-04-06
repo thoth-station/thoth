@@ -31,17 +31,19 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-thoth.storages">
-<span id="thoth-storages-package"></span><h1>thoth.storages package<a class="headerlink" href="#module-thoth.storages" title="Permalink to this headline">¶</a></h1>
-<p>Storage and database adapters for Thoth.</p>
+  <div class="section" id="thoth-storages-package">
+<h1>thoth.storages package<a class="headerlink" href="#thoth-storages-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="thoth.storages.graph.html">thoth.storages.graph package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="thoth.storages.graph.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="thoth.storages.graph.html#module-thoth.storages.graph.janusgraph">thoth.storages.graph.janusgraph module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="thoth.storages.graph.html#module-thoth.storages.graph.models">thoth.storages.graph.models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thoth.storages.graph.html#thoth-storages-graph-cache-module">thoth.storages.graph.cache module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thoth.storages.graph.html#thoth-storages-graph-janusgraph-module">thoth.storages.graph.janusgraph module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thoth.storages.graph.html#thoth-storages-graph-models-module">thoth.storages.graph.models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thoth.storages.graph.html#thoth-storages-graph-models-base-module">thoth.storages.graph.models_base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thoth.storages.graph.html#thoth-storages-graph-utils-module">thoth.storages.graph.utils module</a></li>
 </ul>
 </li>
 </ul>
@@ -304,20 +306,8 @@
 </dd></dl>
 
 </div>
-<div class="section" id="module-thoth.storages.solvers">
-<span id="thoth-storages-solvers-module"></span><h2>thoth.storages.solvers module<a class="headerlink" href="#module-thoth.storages.solvers" title="Permalink to this headline">¶</a></h2>
-<p>Adapter for storing solver results onto a persistence remote store.</p>
-<dl class="class">
-<dt id="thoth.storages.solvers.SolverResultsStore">
-<em class="property">class </em><code class="descclassname">thoth.storages.solvers.</code><code class="descname">SolverResultsStore</code><span class="sig-paren">(</span><em>deployment_name=None</em>, <em>*</em>, <em>host: str = None</em>, <em>key_id: str = None</em>, <em>secret_key: str = None</em>, <em>bucket: str = None</em>, <em>region: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/thoth/storages/solvers.html#SolverResultsStore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.storages.solvers.SolverResultsStore" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#thoth.storages.result_base.ResultStorageBase" title="thoth.storages.result_base.ResultStorageBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">thoth.storages.result_base.ResultStorageBase</span></code></a></p>
-<dl class="attribute">
-<dt id="thoth.storages.solvers.SolverResultsStore.RESULT_TYPE">
-<code class="descname">RESULT_TYPE</code><em class="property"> = 'solver'</em><a class="headerlink" href="#thoth.storages.solvers.SolverResultsStore.RESULT_TYPE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="thoth-storages-solvers-module">
+<h2>thoth.storages.solvers module<a class="headerlink" href="#thoth-storages-solvers-module" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -339,7 +329,7 @@
 <li><a class="reference internal" href="#module-thoth.storages.exceptions">thoth.storages.exceptions module</a></li>
 <li><a class="reference internal" href="#module-thoth.storages.result_base">thoth.storages.result_base module</a></li>
 <li><a class="reference internal" href="#module-thoth.storages.result_schema">thoth.storages.result_schema module</a></li>
-<li><a class="reference internal" href="#module-thoth.storages.solvers">thoth.storages.solvers module</a></li>
+<li><a class="reference internal" href="#thoth-storages-solvers-module">thoth.storages.solvers module</a></li>
 </ul>
 </li>
 </ul>

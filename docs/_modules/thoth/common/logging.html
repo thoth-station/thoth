@@ -51,11 +51,13 @@
 
 <span class="sd">    You can also specify more closely which sub-module logging you are configuring - submodules are separated with</span>
 <span class="sd">    double dash:</span>
+
 <span class="sd">    &gt;&gt;&gt; os.environ[&#39;THOTH_LOG_SOLVER__t PYTHON&#39;]</span>
 <span class="sd">    DEBUG</span>
 
 <span class="sd">    You can also use arguments explicitly that override configuration in env variables (a shorthand for</span>
 <span class="sd">    standard logging functionality):</span>
+
 <span class="sd">    &gt;&gt;&gt; init_logging({&#39;thoth.solver&#39;: &#39;DEBUG&#39;})</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># TODO: JSON in deployments?</span>

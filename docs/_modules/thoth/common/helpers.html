@@ -32,6 +32,7 @@
   <h1>Source code for thoth.common.helpers</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Various utilities to make your life easier.&quot;&quot;&quot;</span>
 
+<span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">contextlib</span> <span class="k">import</span> <span class="n">contextmanager</span>
@@ -46,6 +47,21 @@
         <span class="k">yield</span> <span class="n">curdir</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">curdir</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="parse_datetime"><a class="viewcode-back" href="../../../thoth.common.html#thoth.common.helpers.parse_datetime">[docs]</a><span class="k">def</span> <span class="nf">parse_datetime</span><span class="p">(</span><span class="n">datetime_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Parse datetime string represented in ISO format.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">datetime_string</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S.</span><span class="si">%f</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="datetime_str2timestamp"><a class="viewcode-back" href="../../../thoth.common.html#thoth.common.helpers.datetime_str2timestamp">[docs]</a><span class="k">def</span> <span class="nf">datetime_str2timestamp</span><span class="p">(</span><span class="n">datetime_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Parse datetime string represented in ISO format and return timestamp.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">parse_datetime</span><span class="p">(</span><span class="n">datetime_string</span><span class="p">)</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="datetime2datetime_str"><a class="viewcode-back" href="../../../thoth.common.html#thoth.common.helpers.datetime2datetime_str">[docs]</a><span class="k">def</span> <span class="nf">datetime2datetime_str</span><span class="p">(</span><span class="n">dt</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Create a string representation of a datetime.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dt</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span></div>
 </pre></div>
 
           </div>

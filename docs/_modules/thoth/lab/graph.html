@@ -35,6 +35,8 @@
 <span class="kn">import</span> <span class="nn">asyncio</span>
 <span class="kn">import</span> <span class="nn">typing</span>
 
+<span class="kn">from</span> <span class="nn">gremlin_python.structure.graph</span> <span class="k">import</span> <span class="n">Graph</span>
+<span class="kn">from</span> <span class="nn">gremlin_python.driver.driver_remote_connection</span> <span class="k">import</span> <span class="n">DriverRemoteConnection</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">plotly.offline</span> <span class="k">import</span> <span class="n">init_notebook_mode</span><span class="p">,</span> <span class="n">iplot</span>
 <span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
@@ -91,6 +93,17 @@
             <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">_serialize</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">_serialize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="get_graph_traversal"><a class="viewcode-back" href="../../../thoth.lab.html#thoth.lab.graph.get_graph_traversal">[docs]</a><span class="k">def</span> <span class="nf">get_graph_traversal</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">80</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get graph traversal handle for your experiments.</span>
+
+<span class="sd">    :param location: A location to the graph database instance. Recommended to be</span>
+<span class="sd">                     used with :func:`thoth.lab.utils.obtain_location`</span>
+<span class="sd">    :param port: a port number on which the gremlin listens on</span>
+<span class="sd">    :return: a graph traversal object &quot;g&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Graph</span><span class="p">()</span><span class="o">.</span><span class="n">traversal</span><span class="p">()</span><span class="o">.</span><span class="n">withRemote</span><span class="p">(</span><span class="n">DriverRemoteConnection</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;ws://</span><span class="si">{location}</span><span class="s1">:</span><span class="si">{port}</span><span class="s1">/gremlin&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">))</span></div>
 </pre></div>
 
           </div>

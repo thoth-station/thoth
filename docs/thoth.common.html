@@ -46,6 +46,24 @@
 <dd><p>Manage cwd in a pushd/popd fashion.</p>
 </dd></dl>
 
+<dl class="function">
+<dt id="thoth.common.helpers.datetime2datetime_str">
+<code class="descclassname">thoth.common.helpers.</code><code class="descname">datetime2datetime_str</code><span class="sig-paren">(</span><em>dt: datetime.datetime</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/thoth/common/helpers.html#datetime2datetime_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.common.helpers.datetime2datetime_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a string representation of a datetime.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="thoth.common.helpers.datetime_str2timestamp">
+<code class="descclassname">thoth.common.helpers.</code><code class="descname">datetime_str2timestamp</code><span class="sig-paren">(</span><em>datetime_string: str</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/thoth/common/helpers.html#datetime_str2timestamp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.common.helpers.datetime_str2timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse datetime string represented in ISO format and return timestamp.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="thoth.common.helpers.parse_datetime">
+<code class="descclassname">thoth.common.helpers.</code><code class="descname">parse_datetime</code><span class="sig-paren">(</span><em>datetime_string: str</em><span class="sig-paren">)</span> &#x2192; datetime.datetime<a class="reference internal" href="_modules/thoth/common/helpers.html#parse_datetime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#thoth.common.helpers.parse_datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse datetime string represented in ISO format.</p>
+</dd></dl>
+
 </div>
 <div class="section" id="module-thoth.common.json">
 <span id="thoth-common-json-module"></span><h2>thoth.common.json module<a class="headerlink" href="#module-thoth.common.json" title="Permalink to this headline">¶</a></h2>
@@ -94,12 +112,16 @@ and the value of env variable states verbosity level as in the logging module (D
 </pre></div>
 </div>
 <p>You can also specify more closely which sub-module logging you are configuring - submodules are separated with
-double dash:
-&gt;&gt;&gt; os.environ[‘THOTH_LOG_SOLVER__t PYTHON’]
-DEBUG</p>
+double dash:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;THOTH_LOG_SOLVER__t PYTHON&#39;</span><span class="p">]</span>
+<span class="go">DEBUG</span>
+</pre></div>
+</div>
 <p>You can also use arguments explicitly that override configuration in env variables (a shorthand for
-standard logging functionality):
-&gt;&gt;&gt; init_logging({‘thoth.solver’: ‘DEBUG’})</p>
+standard logging functionality):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">init_logging</span><span class="p">({</span><span class="s1">&#39;thoth.solver&#39;</span><span class="p">:</span> <span class="s1">&#39;DEBUG&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
