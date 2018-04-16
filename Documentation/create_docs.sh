@@ -8,7 +8,7 @@ venv/bin/pip3 install Sphinx
 
 mkdir -p thoth/
 for repo in `cat registered_repos.txt`; do
-	git clone https://github.com/fridex/${repo}.git clones/${repo}
+	git clone https://github.com/thoth-station/${repo}.git clones/${repo}
 	pushd clones/${repo}/
 	$workdir/venv/bin/pip3 install --no-deps .
 	popd
