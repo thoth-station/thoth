@@ -9,7 +9,7 @@ class ThothInstall(DistutilsInstall):
 
 setup(
     name='thoth',
-    version='0.0.0',
+    version='0.0.1',
     description='Thoth project',
     long_description='Thoth project',
     author='Fridolin Pokorny',
