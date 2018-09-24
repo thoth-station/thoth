@@ -51,11 +51,9 @@ Zen of Thoth
 
 1. Bots are our cyborg team members.
 2. Python and machine learning is our first class citizen.
-3. Stateless architecture, if state is needed we use Ceph, OpenShift's
-internal state available through API and graph database for advanced graph
-traversal based queries.
-2. Reuse what has been previously invented.
-3. Errors should never pass silently.
+3. Stateless architecture, if state is needed we use Ceph, OpenShift's internal state available through API and graph database for advanced graph traversal based queries.
+4. Reuse what has been previously invented.
+5. Errors should never pass silently.
 6. Clean design with clean Pythonic code counts.
 7. Use Ansible for always-ready midnight deployment.
 8. Self-living system with minimal operational overhead.
@@ -65,49 +63,39 @@ traversal based queries.
 I want to become a Thoth contributor
 ####################################
 
-If you would like to contirbute in the source code, you can check `all the
-components of Thoth <https://github.com/thoth-station/`_. Most of the
-components are designed to have a command line interface (such as
-solver,package-extract, ...) for easy development and when plugged to an
+If you would like to contirbute in the source code, you can check
+`all the components of Thoth <https://github.com/thoth-station/>`_.
+Most of the componentsare designed to have a command line interface (such as
+solver, package-extract, ...) for easy development and when plugged to an
 OpenShift cluster, they can easily scale baesd on Thoth's design.
 
-If you would like to deploy Thoth, see the `core repository
-<https://github.com/thoth-station/core>`_ where deploymnet playbooks live
-with their step-by-step documentation on how to deploy Thoth into your
-OpenShift cluster (or to your local `oc cluster up` instance).
+If you would like to deploy Thoth, see the 
+`core repository <https://github.com/thoth-station/core>`_ where
+deploymnet playbooks live with their step-by-step documentation on how to
+deploy Thoth into your OpenShift cluster (or to your local `oc cluster up`
+instance).
 
 Game of Gods
 ############
 
-Thoth is actually one of the gods living in the `thoth-station
-<https://github.com/thoth-station/`_. You can find other gods (named based on
-Egyptian mythology) that, together with Thoth, create their own universe. In
-this universe however, gods do not fight against each other. Insead, they
-create a pieceful co-operational ecosystem.
+Thoth is actually one of the gods living in the
+`thoth-station <https://github.com/thoth-station/>`_. You can find other gods
+(named based on Egyptian mythology) that, together with Thoth, create their
+own universe. In this universe however, gods do not fight against each other.
+Insead, they create a pieceful co-operational ecosystem.
 
 Currently available Gods
 #########################
 
- * `Thoth <https://github.com/thoth-station/core>`_ - the recommender system,
- holding knowledge based on which it creates advises
- 
- * `Sesheta <https://github.com/thoth-station/sesheta>`_ - bot that is
- responsible for automated PR merges, gathering information about CI runs on
- new pull requests or automatically labeling new issues and pull requests
- 
- * `Kebechet <https://github.com/thoth-station/kebechet>`_ - bot that is
- responsible for monitoring repositories, issuing pull-requests on new
- dependency releases, automatically issuing new releases on `PyPI
- <https://pypi.org>`, and more
+* `Thoth <https://github.com/thoth-station/core>`_ - the recommender system, holding knowledge based on which it creates advises
 
- * `Amun <https://github.com/thoth-station/amun-api>`_ - system which is the
- execution part of Thoth, it is capable of creating runtime environments based
- on specification, creating application stack and executing necessary tests
- (such as application, performance, ...) to gather observations for Thoth's
- database
+* `Sesheta <https://github.com/thoth-station/sesheta>`_ - bot that is responsible for automated PR merges, gathering information about CI runs on new pull requests or automatically labeling new issues and pull requests
 
- * `Nepthys <https://github.com/thoth-station/nepthys>`_ - a bot responsible
- for automatic documentation updates
+* `Kebechet <https://github.com/thoth-station/kebechet>`_ - bot that is responsible for monitoring repositories, issuing pull-requests on new dependency releases, automatically issuing new releases on `PyPI <https://pypi.org>`_, and more
+
+* `Amun <https://github.com/thoth-station/amun-api>`_ - system which is the execution part of Thoth, it is capable of creating runtime environments based on specification, creating application stack and executing necessary tests (such as application, performance, ...) to gather observations for Thoth's database
+
+* `Nepthys <https://github.com/thoth-station/nepthys>`_ - a bot responsible for automatic documentation updates
  
 See `thoth-station organization <https://github.com/thoth-station/>`_ on
 GitHub for more information.
