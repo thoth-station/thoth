@@ -96,6 +96,8 @@ Currently available Gods
 * `Amun <https://github.com/thoth-station/amun-api>`_ - system which is the execution part of Thoth, it is capable of creating runtime environments based on specification, creating application stack and executing necessary tests (such as application, performance, ...) to gather observations for Thoth's database
 
 * `Nepthys <https://github.com/thoth-station/nepthys>`_ - a bot responsible for automatic documentation updates
+
+* `Thamos <https://github.com/thoth-station/thamos>`_ - a CLI tool and integration library for communicating with Thoth
  
 See `thoth-station organization <https://github.com/thoth-station/>`_ on
 GitHub for more information.
