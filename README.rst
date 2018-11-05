@@ -82,12 +82,12 @@ Thoth is actually one of the gods living in the
 `thoth-station <https://github.com/thoth-station/>`_. You can find other gods
 (named based on Egyptian mythology) that, together with Thoth, create their
 own universe. In this universe however, gods do not fight against each other.
-Insead, they create a pieceful co-operational ecosystem.
+Instead, they create a pieceful co-operational ecosystem.
 
 Currently available Gods
 #########################
 
-* `Thoth <https://github.com/thoth-station/core>`_ - the recommender system, holding knowledge based on which it creates advises
+* `Thoth <https://github.com/thoth-station/core>`_ - the recommender system, holding knowledge based on which it creates advice
 
 * `Sesheta <https://github.com/thoth-station/sesheta>`_ - bot that is responsible for automated PR merges, gathering information about CI runs on new pull requests or automatically labeling new issues and pull requests
 
