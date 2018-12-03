@@ -101,3 +101,9 @@ Currently available Gods
  
 See `thoth-station organization <https://github.com/thoth-station/>`_ on
 GitHub for more information.
+
+Thoth Architecture Overview
+###########################
+
+To get into details of Thoth, see the `Thoth's core repository <https://github.com/thoth-station/core>`_. This repository contains an architecture overview of Thoth with an explanation of core components and data flow inside and outside of project Thoth.
+
