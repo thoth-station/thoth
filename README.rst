@@ -98,6 +98,8 @@ Currently available Gods
 * `Nepthys <https://github.com/thoth-station/nepthys>`_ - a bot responsible for automatic documentation updates
 
 * `Thamos <https://github.com/thoth-station/thamos>`_ - a CLI tool and integration library for communicating with Thoth
+
+* `Isis <https://github.com/thoth-station/isis-api>`_ - an API service exposing feature based queries and project similarity implemented on top of project2vec
  
 See `thoth-station organization <https://github.com/thoth-station/>`_ on
 GitHub for more information.
