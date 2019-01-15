@@ -172,3 +172,12 @@ To see available builds (that match component name), issue the following once yo
 .. code-block:: console
 
   $ oc get builds
+
+If you would like to test application with unreleased packages inside OpenShift cluster, you can do so by installing package from a Git repo and running the ``oc build`` command above:
+
+.. code-block:: console
+
+  # To install thoth-common package from the master branch (you can adjust GitHub organization to point to your fork):
+  $ pipenv install 'git+https://github.com/thoth-station/common.git@master#egg=thoth-common'
+
+Files ``Pipfile`` and ``Pipfile.lock`` get updated. Please, do NOT commit such changes into repositories (we always rely on versioned packages).
