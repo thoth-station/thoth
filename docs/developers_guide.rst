@@ -110,6 +110,28 @@ If you would like to run multiple libraries this way, you need to delimit them u
   $ cd adviser/
   $ PYTHONPATH=../python:../common pipenv run ./thoth-adviser --help
 
+Debugging application and logging
+=================================
+
+All Thoth components use logging that is implemented in the ``thoth-common`` package and is initialized in ``init_logging()`` function (defined in ``thoth-common`` library). This library setups all the routines needed for logging (also sending logs to external monitoring systems such as Sentry).
+
+Besides the functionality stated above, the logging configuration can be adjusted based on environment variables. If you are debugging some parts of the Thoth application and you would like to get debug messages for a library, just set environment variable ``THOTH_LOG_<library name>`` to ``DEBUG`` (or any other log level you would like to see, so suppressing logs is also possible by setting log level to higher values like ``EXCEPTION`` or ``ERROR``). An example of a run can be:
+
+.. code-block:: console
+
+  $ cd adviser/
+  $ THOTH_LOG_STORAGES=DEBUG THOTH_LOG_ADVISER=WARNING PYTHONPATH=../python pipenv run ./thoth-adviser provenance --requirements ./Pipfile --requirements-locked ./Pipfile.lock --files
+
+The command above will suppress any debug and info messages in ``thoth-adviser`` (only warnings, errors and exceptions will be logged) and increases verbosity of ``thoth-storages`` package to ``DEBUG``. Additionally, you can setup logging only for a specific file inside a package by using for example:
+
+.. code-block:: console
+
+  $ cd adviser/
+  $ THOTH_LOG_STORAGES_GRAPH_JANUSGRAPH=DEBUG THOTH_LOG_ADVISER=WARNING PYTHONPATH=../python pipenv run ./thoth-adviser provenance --requirements ./Pipfile --requirements-locked ./Pipfile.lock --files
+
+By exporting ``THOTH_LOG_STORAGES_GRAPH_JANUSGRAPH`` environment variable, you set debug log level for file ``thoth/storages/graph/janusgraph.py`` provided by ``thoth-storages`` package. This way you can debug and inspect behavior only for certain parts of application. If a file has underscore in its name, the environment variable has to have double underscores to explicitly escape it (not to look for a logger defined in a sub-package).
+
+The default log level is set to ``INFO`` to all Thoth components.
 
 Testing application against Ceph and graph database
 ===================================================
