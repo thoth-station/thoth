@@ -156,14 +156,28 @@ To run applications against a graph database, export the following environment v
 
 .. code-block:: console
 
-  $ export JANUSGRAPH_SERVICE_HOST=test-3.janusgraph.thoth-station.ninja
+  $ export DGRAPH_SERVICE_HOST=dgraph.thoth-station.ninja
 
-If the JanusGraph is serving requests on different port (not usual in Thoth deployments), you can specify also port by exporting:
+If the Dgraph is serving requests on different port (not usual in Thoth deployments), you can specify also port by exporting:
 
 .. code-block:: console
 
-  # Default port on which JanusGraph instances listen on:
-  $ export JANUSGRAPH_SERVICE_PORT=8182
+  # Default port on which Dgraph instances listen on:
+  $ export DGRAPH_SERVICE_PORT=9080
+
+Deployments which are in stage/prod/test environment (or any other environment) are usually secured using TLS certificates which guard gRPC access to Dgraph instance. If you would like to communicate with sunch instance, you need to obtain TLS certificates and secure connection by exporting the following environment variable pointing to a directory which has all the certificates present:
+
+.. code-block:: console
+
+  $ export DGRAPH_TLS_PATH=tls/
+  $ ls tls/
+  ca.crt
+  ca.key
+  client.user.crt
+  client.user.key
+  node.crt
+  node.key
+
 
 Running application inside OpenShift vs local development
 =========================================================
