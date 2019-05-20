@@ -217,3 +217,35 @@ If you would like to test application with unreleased packages inside OpenShift 
   $ pipenv install 'git+https://github.com/thoth-station/common.git@master#egg=thoth-common'
 
 Files ``Pipfile`` and ``Pipfile.lock`` get updated. Please, do NOT commit such changes into repositories (we always rely on versioned packages).
+
+Scheduling workload in the cluster
+==================================
+
+You can use your computer to directly talk to cluster and schedule workload there. An example case can be scheduling syncs of solver documents present on Ceph. To do so, you can go to ``user-api`` repo and run Python3 interpreter once your Python environment is set up:
+
+.. code-block:: console
+
+  $ # Go to a repo which has thoth-common and thoth-storages installed:
+  $ cd thoth-station/user-api
+  $ pipenv install --dev
+  $ # Log in to cluster - your credentials will be used to schedule workload:
+  $ oc login <cluster-url>
+  $ # Make sure you adjust secrets before running Python interpreter in storages environment - you can obtain them from gopass:
+  $ PYTHONPATH=. THOTH_MIDDLETIER_NAMESPACE=thoth-middletier-stage THOTH_INFRA_NAMESPACE=thoth-infra-stage KUBERNETES_VERIFY_TLS=0 THOTH_CEPH_SECRET_KEY="***" THOTH_CEPH_KEY_ID="***" THOTH_S3_ENDPOINT_URL=https://s3.url.redhat.com THOTH_CEPH_BUCKET_PREFIX=data/thoth THOTH_CEPH_BUCKET=thoth THOTH_DEPLOYMENT_NAME=thoth-core-upshift-stage pipenv run python3
+
+After running the commands above, you should see Python interpreter's prompt:
+
+.. code-block:: python
+
+  >>> from thoth.storages import SolverResultsStore
+  >>> solver_store = SolverResultsStore()
+  >>> solver_store.connect()
+  >>> from thoth.common import OpenShift
+  >>> os = OpenShift()
+  Failed to load in cluster configuration, fallback to a local development setup: Service host/port is not set.
+  TLS verification when communicating with k8s/okd master is disabled
+  >>> all_solver_document_ids = solver_store.get_document_listing()
+  >>> (os.schedule_graph_sync_solver(solver_document_id, namespace="thoth-middletier-stage") for solver_document_id in all_solver_document_ids)
+
+Once all the adapters get imported and instantiated, you can perform scheduling of workload using the OpenShift abstraction, which will directly talk to OpenShift's master to schedule workload in the cluster.
+
