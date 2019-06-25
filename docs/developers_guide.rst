@@ -127,9 +127,9 @@ The command above will suppress any debug and info messages in ``thoth-adviser``
 .. code-block:: console
 
   $ cd adviser/
-  $ THOTH_LOG_STORAGES_GRAPH_JANUSGRAPH=DEBUG THOTH_LOG_ADVISER=WARNING PYTHONPATH=../python pipenv run ./thoth-adviser provenance --requirements ./Pipfile --requirements-locked ./Pipfile.lock --files
+  $ THOTH_LOG_STORAGES_GRAPH_DGRAPH=DEBUG THOTH_LOG_ADVISER=WARNING PYTHONPATH=../python pipenv run ./thoth-adviser provenance --requirements ./Pipfile --requirements-locked ./Pipfile.lock --files
 
-By exporting ``THOTH_LOG_STORAGES_GRAPH_JANUSGRAPH`` environment variable, you set debug log level for file ``thoth/storages/graph/janusgraph.py`` provided by ``thoth-storages`` package. This way you can debug and inspect behavior only for certain parts of application. If a file has underscore in its name, the environment variable has to have double underscores to explicitly escape it (not to look for a logger defined in a sub-package).
+By exporting ``THOTH_LOG_STORAGES_GRAPH_DGRAPH`` environment variable, you set debug log level for file ``thoth/storages/graph/dgraph.py`` provided by ``thoth-storages`` package. This way you can debug and inspect behavior only for certain parts of application. If a file has underscore in its name, the environment variable has to have double underscores to explicitly escape it (not to look for a logger defined in a sub-package).
 
 The default log level is set to ``INFO`` to all Thoth components.
 
