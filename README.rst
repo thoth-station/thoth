@@ -75,6 +75,19 @@ deploymnet playbooks live with their step-by-step documentation on how to
 deploy Thoth into your OpenShift cluster (or to your local `oc cluster up`
 instance).
 
+Also, check some of the instructions on how to contribute, run and verify your
+code based on `Developer's guide
+<https://github.com/thoth-station/thoth/blob/master/docs/developers_guide.rst>`_.
+
+I want to become a Thoth operator
+#################################
+
+Related operations, how to manage deployment, how to propagate container images
+from test to stage and prod, how to perform initial provisioning or how to
+operate Zuul, please follow instructions in `thoth-ops repository
+<https://github.com/thoth-station/thoth-ops>`_ and related documents in `docs/
+<https://github.com/thoth-station/thoth-ops/tree/master/docs>`_ directory.
+
 Game of Gods
 ############
 
