@@ -216,7 +216,26 @@ If you would like to test application with unreleased packages inside OpenShift 
   # To install thoth-common package from the master branch (you can adjust GitHub organization to point to your fork):
   $ pipenv install 'git+https://github.com/thoth-station/common.git@master#egg=thoth-common'
 
-Files ``Pipfile`` and ``Pipfile.lock`` get updated. Please, do NOT commit such changes into repositories (we always rely on versioned packages).
+After that, you can start build using ``oc start-build <build-name> --from-dir=. -n <namespace>``. Note however that most of the Thoth's buildconfigs use Thoth to recommend application stacks. As you are using a Git version, this recommendation will fail with an error similar to this one:
+
+.. code-block:: console
+
+  thamos.swagger_client.rest.ApiException: (400)
+  Reason: BAD REQUEST
+  HTTP response headers: HTTPHeaderDict({'Server': 'gunicorn/19.9.0', 'Date': 'Tue, 13 Aug 2019 06:28:21 GMT', 'Content-Type': 'application/json', 'Content-Length': '45257', 'Set-Cookie': 'ae5b4faaab1fe6375d62dbc3b1efaf0d=3db7db180ab06210797424ca9ff3b586; path=/; HttpOnly'})
+  HTTP response body: {
+    "error": "Invalid application stack supplied: Package thoth-storages uses a version control system instead of package index: {'git': 'https://github.com/thoth-station/storages' }",
+  }
+
+To bypass this error you need to temporary turn off these recommendations by setting ``THOTH_ADVISE`` to ``0`` in the corresponding buildconfig:
+
+.. code-block:: console
+
+  oc edit bc <build-name> -n <namespace>
+
+Please set the environment variable ``THOTH_ADVISE`` back to ``1`` after you test your changes.
+
+Also not that files ``Pipfile`` and ``Pipfile.lock`` get updated. Please, do NOT commit such changes into repositories (we always rely on versioned packages).
 
 Scheduling workload in the cluster
 ==================================
